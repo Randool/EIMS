@@ -76,13 +76,16 @@
         <div class="templatemo-content">
             <h1>
                 <%
-                    Statement stmt = conn.createStatement();
-                    sql = String.format("select * from student where Sno='%s'", Sno);
-                    ResultSet rs = stmt.executeQuery(sql);
-                    rs.next(); //有毒！
-                    String sname = rs.getString("Sname");
-                    out.println(sname);
-                    stmt.close();
+                    Statement stmt = null;
+                    try {
+                        stmt = conn.createStatement();
+                        ResultSet rs = stmt.executeQuery(String.format("select * from student where Sno='%s'", Sno));
+                        rs.next(); //有毒！
+                        out.println(rs.getString("Sname"));
+                        stmt.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 %>
             </h1>
             <p>本学期成绩如下</p>
@@ -105,29 +108,31 @@
                                     </thead>
                                     <tbody>
                                     <%
-                                        stmt = conn.createStatement();
                                         String sql1 = String.format("SELECT * FROM sc,course where course.cno = sc.cno and Sno='%s'", Sno);
-                                        ResultSet rs1 = stmt.executeQuery(sql1);
-                                        while (rs1.next()) {
-                                            String cno = rs1.getString("Cno");
-                                            int grade = rs1.getInt("Grade");
-                                            String cname = rs1.getString("Cname");
-                                            double point = rs1.getDouble("Gradepoint");
-                                    %>
-                                    <tr>
-                                        <th><%= cno %>
-                                        </th>
-                                        <td><%= cname %>
-                                        </td>
-                                        <td><%= grade %>
-                                        </td>
-                                        <td><%= point %>
-                                        </td>
-                                    </tr>
-                                    <% }
-                                        rs1.close();
-                                        stmt.close();
-                                        conn.close();
+                                        ResultSet rs1 = null;
+                                        try {
+                                            stmt = conn.createStatement();
+                                            rs1 = stmt.executeQuery(sql1);
+                                            while (rs1.next()) {
+                                                String cno = rs1.getString("Cno");
+                                                int grade = rs1.getInt("Grade");
+                                                String cname = rs1.getString("Cname");
+                                                double point = rs1.getDouble("Gradepoint");
+                                                %>
+                                                <tr>
+                                                    <th><%= cno %></th>
+                                                    <td><%= cname %></td>
+                                                    <td><%= grade %></td>
+                                                    <td><%= point %></td>
+                                                </tr>
+                                                <%
+                                            }
+                                            rs1.close();
+                                            stmt.close();
+                                            conn.close();
+                                        } catch (SQLException e) {
+                                            e.printStackTrace();
+                                        }
                                     %>
                                     </tbody>
                                 </table>

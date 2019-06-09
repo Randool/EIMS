@@ -42,7 +42,7 @@
             System.out.println(sql);
             OpenConnection open = new OpenConnection();
             Connection conn = open.getConnection();
-            System.out.println("连接数据库成功");
+//            System.out.println("连接数据库成功");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             if (rs.next()) {

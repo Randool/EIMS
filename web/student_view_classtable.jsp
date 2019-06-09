@@ -6,7 +6,12 @@
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
     String Sno = request.getParameter("Sno");
-    Statement statement = conn.createStatement();
+    Statement statement = null;
+    try {
+        statement = conn.createStatement();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -68,11 +73,8 @@
                 Out</a></li>
         </ul>
     </div><!--/.navbar-collapse -->
-
-
     <div class="templatemo-content-wrapper">
         <div class="templatemo-content">
-
             <h1>
                 <%
                     Statement stmt = conn.createStatement();
