@@ -8,7 +8,7 @@
     Connection conn = open.getConnection();
     Statement stmt = conn.createStatement();
     if (panduan.equals("select")) {//选择课程
-        String Sno = request.getParameter("Sno1");
+        String Sno = request.getParameter("Sno");
         String Cno = request.getParameter("Cno");
 
         sql = String.format("select * from sc where Sno='%s' and Cno='%s'", Sno, Cno);

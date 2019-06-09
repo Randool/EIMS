@@ -5,7 +5,7 @@
     String sql;
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
-    String Sno = request.getParameter("user_no");
+    String Sno = request.getParameter("Sno");
 %>
 <!DOCTYPE html>
 <html>
@@ -49,7 +49,6 @@
                 <ul class="templatemo-submenu">
                     <li><a href="student_select_course.jsp?Sno=<%out.println(Sno);%>">选课</a></li>
                     <li><a href="student_elective_result.jsp?Sno=<%out.println(Sno);%>">选课结果</a></li>
-
                 </ul>
             </li>
             <li class="sub">
@@ -64,8 +63,7 @@
                     <div class="pull-right"></div>
                 </a>
             </li>
-            <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign
-                Out</a></li>
+            <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
         </ul>
     </div><!--/.navbar-collapse -->
 

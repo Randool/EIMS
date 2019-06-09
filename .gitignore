@@ -1,5 +1,5 @@
 out/*
-E:\Codes\Java\EIMS\src\DBConfig.properties
+ src/DBConfig.properties
 
 # Compiled class file
 *.class

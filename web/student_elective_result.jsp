@@ -5,7 +5,7 @@
     String sql;
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
-    String Sno = request.getParameter("user_no");
+    String Sno = request.getParameter("Sno");
 %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,6 @@
 <div class="template-page-wrapper">
     <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
-
             <li class="active"><a href="student.jsp?user_no=<%out.println(Sno);%>"><i class="fa fa-home"></i>学生</a></li>
             <li class="sub open">
                 <a href="javascript:;">
@@ -48,7 +47,6 @@
                 <ul class="templatemo-submenu">
                     <li><a href="student_select_course.jsp?Sno=<%out.println(Sno);%>">选课</a></li>
                     <li><a href="student_elective_result.jsp?Sno=<%out.println(Sno);%>">选课结果</a></li>
-
                 </ul>
             </li>
             <li class="sub">
@@ -64,28 +62,21 @@
                 </a>
             </li>
 
-
             <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign
                 Out</a></li>
         </ul>
     </div><!--/.navbar-collapse -->
 
-
     <div class="templatemo-content-wrapper">
         <div class="templatemo-content">
-
             <h1>请注意：</h1>
             <p>本系学生只能选择本系开设课程</p>
-
-
             <div class="templatemo-panels">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 margin-bottom-30">
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="text-align:center"><h1>选课表</h1></div>
                             <div class="panel-body">
-
-
                                 <%
                                     Statement stmt = conn.createStatement();
                                     sql = String.format("select * from sc,course where sc.cno=course.cno and Sno='%s'", Sno);
@@ -94,7 +85,6 @@
                                     out.println("<tbody>");
                                     Statement stmt1 = conn.createStatement();
                                     ResultSet rs1;
-//一个stmt最好对应一个rs, 如果用一个时间内用一个stmt打开两个rs同时操作,引起ResultSet已经关闭的错误
                                     while (rs.next()) {
                                         String tempTno = rs.getString("Tno");
                                         sql = String.format("select * from teacher where Tno='%s'", tempTno);
@@ -106,14 +96,12 @@
                                         sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
                                         rs1 = stmt1.executeQuery(sql);
                                         rs1.next();
-
                                         out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Ccredit") + "</td><td>" + rs.getString("Sdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + rs.getString("Adr") + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno1=" + Sno + "&panduan=cancel'>退选</a>" + "</td></tr>");
                                     }
                                     out.println("</tbody></table>");
                                     stmt.close();
                                     stmt1.close();
                                     conn.close();
-
                                 %>
                             </div>
                         </div>

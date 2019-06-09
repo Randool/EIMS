@@ -6,6 +6,8 @@
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
     String Sno = request.getParameter("user_no");
+    if (Sno == null)
+        Sno = request.getParameter("Sno");
 %>
 <!DOCTYPE html>
 <html>
@@ -38,7 +40,6 @@
 <div class="template-page-wrapper">
     <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
-
             <li class="active"><a href="student.jsp?user_no=<%out.println(Sno);%>"><i class="fa fa-home"></i>学生</a></li>
             <li class="sub open">
                 <a href="javascript:;">
@@ -46,10 +47,8 @@
                     <div class="pull-right"><span class="caret"></span></div>
                 </a>
                 <ul class="templatemo-submenu">
-
                     <li><a href="student_select_course.jsp?Sno=<%out.println(Sno);%>">选课</a></li>
                     <li><a href="student_elective_result.jsp?Sno=<%out.println(Sno);%>">选课结果</a></li>
-
                 </ul>
             </li>
 
@@ -65,7 +64,6 @@
                     <div class="pull-right"></div>
                 </a>
             </li>
-
 
             <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign
                 Out</a></li>
