@@ -18,7 +18,7 @@ public class Test {
         try {
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            rs.next(); //有毒！
+            rs.next();
             Mname = rs.getString("Mname");
         } catch (SQLException e) {
             e.printStackTrace();
