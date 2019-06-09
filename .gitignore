@@ -1,5 +1,5 @@
 out/*
- src/DBConfig.properties
+src/DBConfig.properties
 
 # Compiled class file
 *.class
@@ -14,7 +14,6 @@ out/*
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
