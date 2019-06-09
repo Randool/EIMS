@@ -6,6 +6,8 @@
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
     String Mno = request.getParameter("user_no");
+    if (Mno == null)
+        Mno = request.getParameter("Mno");
 %>
 <!DOCTYPE html>
 <head>

@@ -25,24 +25,27 @@
         //建立连接
         OpenConnection open = new OpenConnection();
         Connection conn = open.getConnection();
-        Statement stmt = conn.createStatement();
-        sql = "select Tno from teacher";
-        ResultSet rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            String temp = rs.getString("Tno");
-            if (temp.equals(Tno)) {
-                panduan = 0;
-                out.print("<script>alert('教工号重复'); window.location='manager_add_teacher.jsp' </script>");
-                break;
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select Tno from teacher");
+            while (rs.next()) {
+                String temp = rs.getString("Tno");
+                if (temp.equals(Tno)) {
+                    panduan = 0;
+                    out.print("<script>alert('教工号重复'); window.location='manager_add_teacher.jsp' </script>");
+                    break;
+                }
             }
+            if (panduan == 1) {//插入数据
+                sql = String.format("insert into teacher values('%s','%s','%s','%s','%s')", Tno, Tname, Sdept, Tsex, password_get);
+                stmt.executeUpdate(sql);
+                out.print("<script>alert('注册成功'); window.location='manager_view_teacher.jsp' </script>");
+            }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (panduan == 1) {//插入数据
-            sql = String.format("insert into teacher values('%s','%s','%s','%s','%s')", Tno, Tname, Sdept, Tsex, password_get);
-            stmt.executeUpdate(sql);
-            out.print("<script>alert('注册成功'); window.location='manager_view_teacher.jsp' </script>");
-        }
-        stmt.close();
-        conn.close();
     }
 %>
 <!DOCTYPE html>
@@ -166,12 +169,10 @@
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

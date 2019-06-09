@@ -2,11 +2,7 @@
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.OpenConnection" %>
 <%
-    //String url = "jdbc:mysql://localhost:3306/education?characterEncoding=utf8&useSSL=true";
-    //String username_root = "root";
-    //String password = "lichen123";
     String sql;
-
     String Sname = request.getParameter("Sname");
     String Ssex = request.getParameter("Ssex");
     String Sdept = request.getParameter("Sdept");
@@ -27,7 +23,6 @@
             panduan = 0;
         }//判断学号
         //建立连接
-        //Connection conn = DriverManager.getConnection(url, username_root, password);
         OpenConnection open = new OpenConnection();
         Connection conn = open.getConnection();
         Statement stmt = conn.createStatement();
@@ -42,9 +37,8 @@
             }
         }
         if (panduan == 1) {//插入数据
-            sql = "insert into student values('" + Sno + "','" + Sname + "','" + Ssex + "','" + Sdept + "','" + password_get + "')";
+            sql = String.format("insert into student values('%s','%s','%s','%s','%s')", Sno, Sname, Ssex, Sdept, password_get);
             stmt.executeUpdate(sql);
-//		System.out.println(sql);
             out.print("<script>alert('注册成功'); window.location='manager_view_student.jsp' </script>");//判断学号
         }
         stmt.close();

@@ -11,7 +11,7 @@
     String Cweek = request.getParameter("Cweek");
     String Cday = request.getParameter("Cday");
     String Cap = request.getParameter("Cap");
-    String Adr = request.getParameter("Adr");
+    String Addr = request.getParameter("Addr");
     if (Sdept != null) {//检查更新
         int panduan = 1;
         if (Cname == null) {
@@ -45,7 +45,6 @@
         //建立连接
         OpenConnection open = new OpenConnection();
         Connection conn = open.getConnection();
-        //Connection conn = DriverManager.getConnection(url, username_root, password);
         Statement stmt = conn.createStatement();
         sql = "select Cno from course";//检测课程编号
         ResultSet rs = stmt.executeQuery(sql);
@@ -72,7 +71,7 @@
             panduan = 0;
         }
         if (panduan == 1) {//插入数据
-            sql = "insert into course values('" + Cno + "','" + Cname + "'," + Ccredit + ",'" + Sdept + "','" + Tno + "','" + Cweek + "'," + Cday + "," + Cap + ",'" + Adr + "')";
+            sql = String.format("insert into course values('%s','%s',%s,'%s','%s','%s',%s,%s,'%s')", Cno, Cname, Ccredit, Sdept, Tno, Cweek, Cday, Cap, Addr);
             stmt.executeUpdate(sql);
 //		System.out.println(sql);
             out.print("<script>alert('注册成功'); window.location='manager_view_course.jsp' </script>");//判断学号
@@ -158,8 +157,6 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="text-align:center"><h1>课程添加</h1></div>
                             <div class="panel-body">
-
-
                                 <p class="margin-bottom-15" style="color: red">请正确填写以下信息！</p>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -202,8 +199,8 @@
                                                 <input type="text" class="form-control" name="Cap">
                                             </div>
                                             <div class="col-md-6 margin-bottom-15">
-                                                <label for="Adr" class="control-label">上课地点</label>
-                                                <input type="text" class="form-control" name="Adr">
+                                                <label for="Addr" class="control-label">上课地点</label>
+                                                <input type="text" class="form-control" name="Addr">
                                             </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-primary">增加</button>

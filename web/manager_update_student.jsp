@@ -11,9 +11,13 @@
     if (panduan != null && panduan.equals("true")) {//直接删除
         String Sno = request.getParameter("Sno");
         sql = String.format("delete  from student where Sno='%s'", Sno);
-        stmt.executeUpdate(sql);
-        stmt.close();
-        conn.close();
+        try {
+            stmt.executeUpdate(sql);
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         out.print("<script>alert('删除成功'); window.location='manager_view_student.jsp' </script>");
     } else if (panduan != null && panduan.equals("update")) {//二次更新
         ResultSet rs;
@@ -33,9 +37,13 @@
         }//判断学号
         if (panduan2 == 1) {
             sql = String.format("update student set Sname='%s',Ssex='%s',Sdept='%s',Password='%s' where Sno='%s'", Sname, Ssex, Sdept, password_get, Sno);
-            stmt.executeUpdate(sql);
-            stmt.close();
-            conn.close();
+            try {
+                stmt.executeUpdate(sql);
+                stmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             out.print("<script>alert('更新成功！'); window.location='manager_view_student.jsp' </script>");
         }
     }%>
@@ -44,8 +52,12 @@
     if (panduan != null && panduan.equals("false")) {
         String Sno = request.getParameter("Sno");
         sql = String.format("select *  from student where Sno='%s'", Sno);
-        rs = stmt.executeQuery(sql);
-        rs.next();
+        try {
+            rs = stmt.executeQuery(sql);
+            rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 %>
 <!DOCTYPE html>
@@ -122,12 +134,9 @@
             <div class="templatemo-panels">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 margin-bottom-30">
-
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="text-align:center"><h1>修改学籍</h1></div>
                             <div class="panel-body">
-
-
                                 <p class="margin-bottom-15" style="color: red">请正确修改以下信息！</p>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -191,13 +200,10 @@
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

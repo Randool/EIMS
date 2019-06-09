@@ -60,8 +60,7 @@
             panduan2 = 0;
         }
         int panduant = 0;
-        sql = "select Tno from teacher";
-        rs = stmt.executeQuery(sql);
+        rs = stmt.executeQuery("select Tno from teacher");
         while (rs.next()) {
             String temp = rs.getString("Tno");
             if (temp.equals(Tno)) {
