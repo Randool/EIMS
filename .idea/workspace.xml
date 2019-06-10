@@ -6,10 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f5384e2-ac88-4c92-b7a3-6491a8dc4348" name="Default Changelist" comment="增加了">
+    <list default="true" id="6f5384e2-ac88-4c92-b7a3-6491a8dc4348" name="Default Changelist" comment="消除了部分bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/open/util/OpenConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/open/util/OpenConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/js/Chart.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/Chart.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/manager_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_course.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/student_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/student_update_course.jsp" afterDir="false" />
@@ -178,7 +177,7 @@
           <entry key="jsp" value="1132" />
           <entry key="md" value="52" />
           <entry key="properties" value="1" />
-          <entry key="txt" value="149" />
+          <entry key="txt" value="176" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -187,7 +186,7 @@
           <entry key="JAVA" value="5" />
           <entry key="JSP" value="1129" />
           <entry key="Markdown" value="52" />
-          <entry key="PLAIN_TEXT" value="149" />
+          <entry key="PLAIN_TEXT" value="176" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="2" />
         </counts>
@@ -214,20 +213,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/student_update_course.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="163">
-              <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="33" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/open/util/OpenConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="38" column="34" lean-forward="true" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+            <state relative-caret-position="598">
+              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -303,8 +302,8 @@
         <option value="$PROJECT_DIR$/web/manager_update_teacher.jsp" />
         <option value="$PROJECT_DIR$/web/student_elective_result.jsp" />
         <option value="$PROJECT_DIR$/web/student.jsp" />
-        <option value="$PROJECT_DIR$/web/student_update_course.jsp" />
         <option value="$PROJECT_DIR$/src/com/open/util/OpenConnection.java" />
+        <option value="$PROJECT_DIR$/web/student_update_course.jsp" />
       </list>
     </option>
   </component>
@@ -551,7 +550,7 @@
       <workItem from="1560081263521" duration="3203000" />
       <workItem from="1560147978861" duration="2021000" />
       <workItem from="1560154299779" duration="5784000" />
-      <workItem from="1560163681525" duration="1725000" />
+      <workItem from="1560163681525" duration="1848000" />
     </task>
     <task id="LOCAL-00001" summary="增加了项目需要的环境">
       <created>1560078592823</created>
@@ -602,11 +601,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560160144509</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="AutoCommit!!!!!!!!!">
+      <created>1560165498275</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1560165498276</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32655000" />
+    <option name="totallyTimeSpent" value="32778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -621,7 +627,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.19369973" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.19369973" />
       <window_info id="Structure" order="1" sideWeight="0.50110376" side_tool="true" weight="0.22397476" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -631,8 +637,8 @@
       <window_info id="Web" order="7" sideWeight="0.5011601" side_tool="true" weight="0.19034852" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.33798882" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" visible="true" weight="0.3980447" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.33798882" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.3980447" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32914925" />
@@ -717,7 +723,8 @@
     <MESSAGE value="增加了teacher页面的异常处理代码" />
     <MESSAGE value="修复了若干bug" />
     <MESSAGE value="修改了Sno1之类的错误" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了Sno1之类的错误" />
+    <MESSAGE value="AutoCommit!!!!!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="AutoCommit!!!!!!!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -736,7 +743,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/web/student_update_course.jsp</url>
-          <line>14</line>
+          <line>13</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
@@ -998,20 +1005,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/student_update_course.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/open/util/OpenConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="38" column="34" lean-forward="true" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+        <state relative-caret-position="598">
+          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/student_update_course.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>

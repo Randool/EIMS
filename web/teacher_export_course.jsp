@@ -135,7 +135,7 @@
                                             String cname = rs.getString("Cname");
                                             String cweek = rs.getString("Cweek");
                                             String cday = rs.getString("Cday");
-                                            String adr = rs.getString("Addr");
+                                            String Addr = rs.getString("Addr");
                                             name[j] = cname;
                                             week[j] = cweek;
                                             day[j] = cday;

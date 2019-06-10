@@ -27,7 +27,7 @@
             String Cweek = request.getParameter("Cweek");
             String Cday = request.getParameter("Cday");
             String Cap = request.getParameter("Cap");
-            String Adr = request.getParameter("Adr");
+            String Addr = request.getParameter("Addr");
             if (Cname == null || Cname.length() == 0) {
                 out.print("<script>alert('课程名为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
@@ -52,7 +52,7 @@
                 out.print("<script>alert('开课人数不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
             }
-            if (Adr == null || Adr.length() == 0) {
+            if (Addr == null || Addr.length() == 0) {
                 out.print("<script>alert('上课地址不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
             }
@@ -70,7 +70,7 @@
                 panduan2 = 0;
             }
             if (panduan2 == 1) {
-                sql = String.format("update course set Cname='%s',Credit='%s',Sdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Adr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Adr, Cno);
+                sql = String.format("update course set Cname='%s',Credit='%s',Sdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Addr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Addr, Cno);
                 System.out.println(sql);
                 stmt.executeUpdate(sql);
                 stmt.close();
@@ -232,8 +232,8 @@
                                                        value="<%if(panduan!=null&&panduan.equals("false"))out.print(rs.getString("Cap"));%>">
                                             </div>
                                             <div class="col-md-6 margin-bottom-15">
-                                                <label for="Adr" class="control-label">上课地点</label>
-                                                <input type="text" class="form-control" name="Adr"
+                                                <label for="Addr" class="control-label">上课地点</label>
+                                                <input type="text" class="form-control" name="Addr"
                                                        value="<%if(panduan!=null&&panduan.equals("false"))out.print(rs.getString("Addr"));%>">
                                             </div>
                                             <div class="col-md-12">

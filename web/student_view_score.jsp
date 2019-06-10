@@ -117,7 +117,7 @@
                                                 String cno = rs1.getString("Cno");
                                                 int grade = rs1.getInt("Grade");
                                                 String cname = rs1.getString("Cname");
-                                                double point = rs1.getDouble("Gradepoint");
+                                                double point = rs1.getDouble("GPA");
                                                 %>
                                                 <tr>
                                                     <th><%= cno %></th>

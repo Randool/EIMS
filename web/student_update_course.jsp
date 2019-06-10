@@ -8,15 +8,16 @@
     Connection conn = open.getConnection();
     try {
         Statement stmt = conn.createStatement();
-        if (panduan.equals("select")) {//选择课程
-            String Sno = request.getParameter("Sno");
-            String Cno = request.getParameter("Cno");
+        String Sno = request.getParameter("Sno");
+        String Cno = request.getParameter("Cno");
 
+        if (panduan.equals("select")) {//选择课程
             sql = String.format("select * from sc where Sno='%s' and Cno='%s'", Sno, Cno);
             ResultSet rs = stmt.executeQuery(sql);
             int i = 0;
             while (rs.next()) {
                 i++;
+                break;
             }
             //System.out.println(i);
             if (i != 0) {
@@ -24,13 +25,11 @@
                 stmt.close();
                 conn.close();
             } else { //通过第一条检验
-                sql = String.format("select count(*) from sc where Cno='%s'", Cno);
-                rs = stmt.executeQuery(sql);
+                rs = stmt.executeQuery(String.format("select count(*) from sc where Cno='%s'", Cno));
                 rs.next();
                 String yixuan = rs.getString("count(*)"); //获取已经选择的人数
                 //System.out.println(yixuan);
-                sql = String.format("select * from course where Cno='%s'", Cno);
-                rs = stmt.executeQuery(sql);
+                rs = stmt.executeQuery(String.format("select * from course where Cno='%s'", Cno));
                 rs.next();
                 String capacity = rs.getString("Cap"); //获取容量
                 //	System.out.println(capacity);
@@ -40,24 +39,24 @@
                     conn.close();
                 } else { //通过第二道检验
                     //开始检查是否冲突
-                    sql = String.format("select * from course where Cno='%s'", Cno); //即将选择的课程信息
-                    rs = stmt.executeQuery(sql);
+                    //即将选择的课程信息
+                    rs = stmt.executeQuery(String.format("select * from course where Cno='%s'", Cno));
                     rs.next();
                     String week1 = rs.getString("Cweek");
                     String day1 = rs.getString("Cday");
                     //查看这个学生已经选择的课程信息
                     sql = String.format("select * from sc,course where sc.cno=course.cno and Sno='%s'", Sno);
                     rs = stmt.executeQuery(sql);
-                    String flag = "false";
+                    boolean flag = false;
                     while (rs.next()) {
                         String week2 = rs.getString("Cweek");
                         String day2 = rs.getString("Cday");
                         if (week1.equals(week2) && day1.equals(day2)) {
-                            flag = "true"; //有冲突
+                            flag = true;    //有冲突
                             break;
                         }
                     }
-                    if (flag.equals("false")) { //没冲突，通过第三道检验
+                    if (!flag) { //没冲突，通过第三道检验
                         sql = String.format("insert into SC(Sno,Cno) values('%s','%s')", Sno, Cno);
                         System.out.println(sql);
                         stmt.executeUpdate(sql);
@@ -72,10 +71,9 @@
                 }
             }
         } else if (panduan.equals("cancel")) {
-            String Sno = request.getParameter("Sno");
-            String Cno = request.getParameter("Cno");
             sql = String.format("delete from sc where Sno='%s' and Cno='%s'", Sno, Cno);
-            stmt.executeUpdate(sql);
+            int a = stmt.executeUpdate(sql);
+            System.out.println(a);
             stmt.close();
             conn.close();
             out.print(String.format("<script>alert('删除成功'); window.location='student_elective_result.jsp?Sno=%s' </script>", Sno));
