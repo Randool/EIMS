@@ -34,7 +34,7 @@ public class OpenConnection {
 
         try {
             conn = DriverManager.getConnection(url, user_name, password);  //获取数据库连接
-            conn.setAutoCommit(false);
+            conn.setAutoCommit(true);
             return conn;       //返回一个数据库连接。
         } catch (SQLException e) {
             e.printStackTrace();
