@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="java.nio.charset.StandardCharsets" %>
+<%@ page import="static java.nio.charset.StandardCharsets.*" %>
 <%
     String sql;
     String panduan = request.getParameter("panduan");
     if (panduan == null) out.print("<script>alert('请指定学生！'); window.location='manager_view_student.jsp' </script>");
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     try {
         Statement stmt = conn.createStatement();
+        String Sno = request.getParameter("Sno");
+        String Sname = new String(request.getParameter("Sname").getBytes(ISO_8859_1), UTF_8);
         if (panduan != null && panduan.equals("true")) {//直接删除
-            String Sno = request.getParameter("Sno");
-            sql = String.format("delete  from student where Sno='%s'", Sno);
+            sql = String.format("delete from student where Sno='%s'", Sno);
             stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
@@ -19,14 +22,12 @@
         } else if (panduan != null && panduan.equals("update")) {//二次更新
             ResultSet rs;
             int panduan2 = 1;
-            String Sno = request.getParameter("Sno");
-            String Sname = request.getParameter("Sname");
             if (Sname == null || Sname.length() == 0) {
                 out.print("<script>alert('姓名为空！'); window.location='manager_update_student.jsp?Sno=" + Sno + "&panduan=false' </script>");
                 panduan2 = 0;
             }//判断姓名
-            String Ssex = new String(request.getParameter("Ssex").getBytes("ISO8859_1"));
-            String Sdept = request.getParameter("Sdept");
+            String Ssex = new String(rs.getString("Ssex").getBytes(ISO_8859_1), UTF_8);
+            String Sdept = new String(rs.getString("Sdept").getBytes(ISO_8859_1), UTF_8);
             String password_get = request.getParameter("password");
             if (password_get == null || password_get.length() == 0) {
                 out.print(String.format("<script>alert('密码为空！'); window.location='manager_update_student.jsp?Sno=%s&panduan=false' </script>", Sno));
@@ -43,7 +44,6 @@
 <%!ResultSet rs; //作用域%>
 <%
         if (panduan != null && panduan.equals("false")) {
-            String Sno = request.getParameter("Sno");
             sql = String.format("select *  from student where Sno='%s'", Sno);
             rs = stmt.executeQuery(sql);
             rs.next();

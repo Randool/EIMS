@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     String Sno = request.getParameter("Sno");
 %>
@@ -97,7 +99,7 @@
                                             sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
                                             rs1 = stmt1.executeQuery(sql);
                                             rs1.next();
-                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + rs.getString("Addr") + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno=" + Sno + "&panduan=cancel'>退选</a>" + "</td></tr>");
+                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + new String(rs.getString("Cname").getBytes(ISO_8859_1), UTF_8) + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + new String(rs.getString("Addr").getBytes(ISO_8859_1), UTF_8) + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno=" + Sno + "&panduan=cancel'>退选</a>" + "</td></tr>");
                                         }
                                         out.println("</tbody></table>");
                                         stmt.close();

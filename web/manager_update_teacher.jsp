@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
     String panduan = request.getParameter("panduan");
     if (panduan == null) out.print("<script>alert('请指定教工！'); window.location='manager_view_teacher.jsp' </script>");
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     try {
         Statement stmt = conn.createStatement();
@@ -20,13 +22,13 @@
             ResultSet rs;
             int panduan2 = 1;
             String Tno = request.getParameter("Tno");
-            String Tname = request.getParameter("Tname");
-            if (Tname == null || Tname.length() == 0) {
+            String Tname = new String(request.getParameter("Tname").getBytes(ISO_8859_1), UTF_8);
+            if (Tname.length() == 0) {
                 out.print("<script>alert('姓名为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
                 panduan2 = 0;
             }//判断姓名
-            String Tsex = request.getParameter("Tsex");
-            String Sdept = request.getParameter("Sdept");
+            String Tsex = new String(request.getParameter("Tsex").getBytes(ISO_8859_1), UTF_8);
+            String Sdept = new String(request.getParameter("Sdept").getBytes(ISO_8859_1), UTF_8);
             String password_get = request.getParameter("password");
             if (password_get == null || password_get.length() == 0) {
                 out.print("<script>alert('密码为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
@@ -136,7 +138,7 @@
                                             <div class="col-md-12 margin-bottom-15">
                                                 <label for="firstName" class="control-label">姓名</label>
                                                 <input type="text" class="form-control" name="Tname"
-                                                       value="<%if(panduan!=null&&panduan.equals("false"))out.print(rs.getString("Tname"));%>">
+                                                       value="<%if(panduan!=null&&panduan.equals("false"))out.print(new String(request.getParameter("Tname").getBytes(ISO_8859_1), UTF_8));%>">
                                             </div>
                                             <div class="col-md-12 margin-bottom-15">
                                                 <label for="lastName" class="control-label">学号</label>

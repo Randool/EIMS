@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
 %>
 <!DOCTYPE html>
@@ -84,23 +86,30 @@
                             <div class="panel-heading" style="text-align:center"><h1>教师信息</h1></div>
                             <div class="panel-body">
                                 <%
-                                    Statement stmt = conn.createStatement();
-                                    sql = "select * from teacher";
-                                    ResultSet rs = stmt.executeQuery(sql);
-                                    out.println("<table class='table table-striped'><thead><tr><th>学工号</th><th>姓名</th><th>性别</th><th>所属系</th><th>密码</th><th>更改</th></tr></thead>");
-                                    out.println("<tbody>");
-                                    while (rs.next()) {
-                                        out.println("<tr><td>" + rs.getString("Tno") + "</td><td>" + rs.getString("Tname") + "</td><td>" + rs.getString("Tsex") + "</td><td>" + rs.getString("Tdept") + "</td><td>" + rs.getString("Password") + "</td><td>" + "<a href='manager_update_teacher.jsp?Tno=" + rs.getString("Tno") + "&panduan=false'>修改</a>/<a href='manager_update_teacher.jsp?Tno=" + rs.getString("Tno") + "&panduan=true'>删除</a>" + "</td></tr>" + "</td></tr>");
+                                    try {
+                                        Statement stmt = conn.createStatement();
+                                        ResultSet rs = stmt.executeQuery("select * from teacher");
+                                        out.println("<table class='table table-striped'><thead><tr><th>学工号</th><th>姓名</th><th>性别</th><th>所属系</th><th>密码</th><th>更改</th></tr></thead>");
+                                        out.println("<tbody>");
+                                        while (rs.next()) {
+                                            String Tno = rs.getString("Tno");
+                                            String Tname = rs.getString("Tname");
+                                            String Tsex = rs.getString("Tsex");
+                                            String Tdept = rs.getString("Tdept");
+                                            String pass = rs.getString("Password");
+                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=false'>修改</a>/<a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=true'>删除</a></td></tr></td></tr>", Tno, Tname, Tsex, Tdept, pass, Tno, Tname, Tno, Tname));
+                                        }
+                                        out.println("</tbody></table>");
+                                        stmt.close();
+                                        conn.close();
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
                                     }
-                                    out.println("</tbody></table>");
-                                    stmt.close();
-                                    conn.close();
                                 %>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

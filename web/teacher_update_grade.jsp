@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%!ResultSet rs; //全局作用域%>
 <%
     String sql;
@@ -21,7 +21,7 @@
     String user_no = svalue;
     String change = request.getParameter("change");
     String Cno = request.getParameter("Cno");
-    String Cname = request.getParameter("Cname");
+    String Cname = new String(request.getParameter("Cnamept").getBytes(ISO_8859_1), UTF_8);
     String Sno = request.getParameter("Sno");
     String Newgrade = request.getParameter("Newgrade");
     String Sdept = request.getParameter("Sedpt");
@@ -31,7 +31,7 @@
     System.out.print(panduan);
     System.out.print(user_no);
 
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
 
     try {

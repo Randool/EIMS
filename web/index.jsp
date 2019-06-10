@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%!
     public static boolean isNumeric(String str) {
         for (int i = str.length(); --i >= 0; ) {
@@ -40,7 +40,7 @@
         if (panduan2 == 1) {
             String sql = String.format("select * from %s where %s='%s'", user_type, user_no, username);
             System.out.println(sql);
-            OpenConnection open = new OpenConnection();
+            MySQLJava open = new MySQLJava();
             Connection conn = open.getConnection();
 //            System.out.println("连接数据库成功");
             Statement stmt = conn.createStatement();

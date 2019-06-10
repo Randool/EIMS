@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%
     String sql;
     Cookie cookies[] = request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组里面
@@ -16,7 +16,7 @@
         }
     }
     String user_no = svalue;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
 %>
 <!DOCTYPE html>
@@ -103,7 +103,7 @@
                                         out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>系名</th><th>学分</th></tr></thead>");
                                         out.println("<tbody>");
                                         while (rs.next()) {
-                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("teacher.Tdept") + "</td><td>" + rs.getString("Credit") + "</td></tr>");
+                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + new String(rs.getString("Cname").getBytes(ISO_8859_1), UTF_8) + "</td><td>" + rs.getString("teacher.Tdept") + "</td><td>" + rs.getString("Credit") + "</td></tr>");
                                         }
                                         out.println("</tbody></table>");
                                         rs.close();

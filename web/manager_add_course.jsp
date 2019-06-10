@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
-    String Cname = request.getParameter("Cname");
-    String Ccredit = request.getParameter("Ccredit");
+    String Cname = request.getParameter("Cnamept");
+    String Credit = request.getParameter("Credit");
     String Sdept = request.getParameter("Sdept");
     String Cno = request.getParameter("Cno");
     String Tno = request.getParameter("Tno");
@@ -22,12 +24,12 @@
             out.print("<script>alert('课程号长度大于4位！'); window.location='manager_add_course.jsp' </script>");
             panduan = 0;
         }
-        if (Ccredit == null) {
+        if (Credit == null) {
             out.print("<script>alert('学分为空！'); window.location='manager_add_course.jsp' </script>");
             panduan = 0;
         }
-        if (Tno.length() != 9) {
-            out.print("<script>alert('教工号长度不为9位！'); window.location='manager_add_course.jsp' </script>");
+        if (Tno.length() > 15) {
+            out.print("<script>alert('教工号长度需小于15位！'); window.location='manager_add_course.jsp' </script>");
             panduan = 0;
         }
         if (Cweek == null || Cweek.length() > 10) {
@@ -43,7 +45,7 @@
             panduan = 0;
         }
         //建立连接
-        OpenConnection open = new OpenConnection();
+        MySQLJava open = new MySQLJava();
         Connection conn = open.getConnection();
         try {
             Statement stmt = conn.createStatement();
@@ -71,7 +73,7 @@
                 panduan = 0;
             }
             if (panduan == 1) {//插入数据
-                sql = String.format("insert into course values('%s','%s',%s,'%s','%s','%s',%s,%s,'%s')", Cno, Cname, Ccredit, Sdept, Tno, Cweek, Cday, Cap, Addr);
+                sql = String.format("insert into course values('%s','%s',%s,'%s','%s','%s',%s,%s,'%s')", Cno, Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Addr);
                 stmt.executeUpdate(sql);
                 out.print("<script>alert('注册成功'); window.location='manager_view_course.jsp' </script>");//判断学号
             }
@@ -172,8 +174,8 @@
                                                 <input type="text" class="form-control" name="Cname">
                                             </div>
                                             <div class="col-md-6 margin-bottom-15">
-                                                <label for="Ccredit" class="control-label">学分</label>
-                                                <input type="text" class="form-control" name="Ccredit">
+                                                <label for="Credit" class="control-label">学分</label>
+                                                <input type="text" class="form-control" name="Credit">
                                             </div>
                                             <div class="col-md-6 margin-bottom-15">
                                                 <label for="Tno" class="control-label">教工号</label>

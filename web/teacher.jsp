@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%
     String sql;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     String user_no = request.getParameter("user_no");
     Cookie cookie = new Cookie("user_no", user_no);
@@ -86,7 +86,7 @@
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(sql);
                         rs.next(); //有毒！
-                        String tname = rs.getString("Tname");
+                        String tname = new String(request.getParameter("Tname").getBytes(ISO_8859_1), UTF_8);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%
     String sql;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
 %>
 <!DOCTYPE html>
@@ -90,7 +90,11 @@
                                         out.println("<table class='table table-striped'><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>所属系</th><th>密码</th><th>更改</th></tr></thead>");
                                         out.println("<tbody>");
                                         while (rs.next()) {
-                                            out.println("<tr><td>" + rs.getString("Sno") + "</td><td>" + rs.getString("Sname") + "</td><td>" + rs.getString("Ssex") + "</td><td>" + rs.getString("Sdept") + "</td><td>" + rs.getString("Password") + "</td><td>" + "<a href='manager_update_student.jsp?Sno=" + rs.getString("Sno") + "&panduan=false'>修改</a>/<a href='manager_update_student.jsp?Sno=" + rs.getString("Sno") + "&panduan=true'>删除</a>" + "</td></tr>");
+                                            String Sname = rs.getString("Sname");
+                                            String Sno = rs.getString("Sno");
+                                            String Sdept = rs.getString("Sdept");
+                                            String pass = rs.getString("Password");
+                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='manager_update_student.jsp?Sno=%s&Sname=%s&panduan=false'>修改</a>/<a href='manager_update_student.jsp?Sno=%s&Sname=%s&panduan=true'>删除</a></td></tr>", Sno, Sname, rs.getString("Ssex"), Sdept, pass, Sno, Sname, Sno, Sname));
                                         }
                                         out.println("</tbody></table>");
                                         stmt.close();

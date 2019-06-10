@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%
     String sql;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     String Sno = request.getParameter("user_no");
     if (Sno == null)
@@ -51,7 +51,6 @@
                     <li><a href="student_elective_result.jsp?Sno=<%out.println(Sno);%>">选课结果</a></li>
                 </ul>
             </li>
-
             <li class="sub">
                 <a href="student_view_classtable.jsp?Sno=<%out.println(Sno);%>">
                     <i class="fa fa-database"></i> 查看课程
@@ -73,7 +72,6 @@
 
     <div class="templatemo-content-wrapper">
         <div class="templatemo-content">
-
             <h1>
                 <%
                     try {

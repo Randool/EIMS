@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%
     String sql;
     String Tname = request.getParameter("Tname");
@@ -14,8 +14,8 @@
             out.print("<script>alert('姓名为空！'); window.location='manager_add_teacher.jsp' </script>");
             panduan = 0;
         }//判断姓名
-        if (Tno.length() != 9) {
-            out.print("<script>alert('教工号长度不为9！'); window.location='manager_add_teacher.jsp' </script>");
+        if (Tno == null) {
+            out.print("<script>alert('教工号为空！'); window.location='manager_add_teacher.jsp' </script>");
             panduan = 0;
         }//判断教工号
         if (password_get == null) {
@@ -23,7 +23,7 @@
             panduan = 0;
         }//判断密码号
         //建立连接
-        OpenConnection open = new OpenConnection();
+        MySQLJava open = new MySQLJava();
         Connection conn = open.getConnection();
         try {
             Statement stmt = conn.createStatement();

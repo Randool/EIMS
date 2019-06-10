@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%
     String sql;
     String panduan = request.getParameter("panduan");
     if (panduan == null) out.print("<script>alert('请指定课程！'); window.location='manager_view_course.jsp' </script>");
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     try {
         Statement stmt = conn.createStatement();
@@ -36,8 +36,8 @@
                 out.print("<script>alert('学分为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
             }
-            if (Tno.length() != 9) {
-                out.print("<script>alert('教工号长度不为9位！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+            if (Tno.length() > 15) {
+                out.print("<script>alert('教工号长度需小于15位！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
             }
             if (Cweek == null || Cweek.length() == 0 || Cweek.length() > 10) {

@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
 %>
 <!DOCTYPE html>
@@ -91,7 +93,16 @@
                                         out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>课程学分</th><th>课程所属系</th><th>教师编号</th><th>授课星期</th><th>授课时间</th><th>总人数</th><th>授课地点</th><th>更改</th></tr></thead>");
                                         out.println("<tbody>");
                                         while (rs.next()) {
-                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + rs.getString("Tno") + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs.getString("Addr") + "</td><td>" + "<a href='manager_update_course.jsp?Cno=" + rs.getString("Cno") + "&panduan=false'>修改</a>/<a href='manager_update_course.jsp?Cno=" + rs.getString("Cno") + "&panduan=true'>删除</a>" + "</td></tr>");
+                                            String Cno = rs.getString("Cno");
+                                            String Cname = rs.getString("Cname");
+                                            String Credit = rs.getString("Credit");
+                                            String Cdept = rs.getString("Cdept");
+                                            String Tno = rs.getString("Tno");
+                                            String Cweek = rs.getString("Cweek");
+                                            String Cday = rs.getString("Cday");
+                                            String Cap = rs.getString("Cap");
+                                            String Addr = rs.getString("Addr");
+                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='manager_update_course.jsp?Cno=%s&panduan=false'>修改</a>/<a href='manager_update_course.jsp?Cno=%s&panduan=true'>删除</a></td></tr>", Cno, Cname, Credit, Cdept, Tno, Cweek, Cday, Cap, Addr, Cno, Cno));
                                         }
                                         out.println("</tbody></table>");
                                         stmt.close();

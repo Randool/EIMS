@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
     String Sname = request.getParameter("Sname");
@@ -23,7 +25,7 @@
             panduan = 0;
         }//判断学号
         //建立连接
-        OpenConnection open = new OpenConnection();
+        MySQLJava open = new MySQLJava();
         Connection conn = open.getConnection();
         try {
             Statement stmt = conn.createStatement();

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
-<%@ page import="com.open.util.OpenConnection" %>
+<%@ page import="com.open.util.MySQLJava" %>
 <%
     String sql;
-    OpenConnection open = new OpenConnection();
+    MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     Cookie cookies[] = request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组里面
     Cookie sCookie = null;
@@ -98,7 +98,7 @@
                         sql = String.format("select * from teacher where Tno='%s'", user_no);
                         rs = stmt.executeQuery(sql);
                         rs.next(); //有毒！
-                        out.println(rs.getString("Tname"));
+                        out.println(new String(request.getParameter("Tname").getBytes(ISO_8859_1), UTF_8));
                 %>
             </h1>
             <p>本学期课表如下</p>
@@ -132,10 +132,10 @@
                                         String day[] = new String[20];
                                         int j = 0;
                                         while (rs.next()) {
-                                            String cname = rs.getString("Cname");
+                                            String cname = new String(rs.getString("Cname").getBytes(ISO_8859_1), UTF_8);
                                             String cweek = rs.getString("Cweek");
                                             String cday = rs.getString("Cday");
-                                            String Addr = rs.getString("Addr");
+                                            String Addr = new String(rs.getString("Addr").getBytes(ISO_8859_1), UTF_8);
                                             name[j] = cname;
                                             week[j] = cweek;
                                             day[j] = cday;
