@@ -7,20 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f5384e2-ac88-4c92-b7a3-6491a8dc4348" name="Default Changelist" comment="消除了部分bug">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_add_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_add_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_student.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_add_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_update_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_student.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_update_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_view_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_view_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_view_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_view_student.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_view_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_view_teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/student_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/student_update_course.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -185,7 +173,7 @@
           <entry key="jsp" value="1175" />
           <entry key="md" value="52" />
           <entry key="properties" value="1" />
-          <entry key="txt" value="210" />
+          <entry key="txt" value="232" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -194,7 +182,7 @@
           <entry key="JAVA" value="5" />
           <entry key="JSP" value="1172" />
           <entry key="Markdown" value="52" />
-          <entry key="PLAIN_TEXT" value="210" />
+          <entry key="PLAIN_TEXT" value="232" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="2" />
         </counts>
@@ -215,8 +203,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="61" column="70" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="70" />
+            <state relative-caret-position="1612">
+              <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -548,7 +536,7 @@
       <workItem from="1560147978861" duration="2021000" />
       <workItem from="1560154299779" duration="5784000" />
       <workItem from="1560163681525" duration="2143000" />
-      <workItem from="1560167218266" duration="1003000" />
+      <workItem from="1560167218266" duration="1296000" />
     </task>
     <task id="LOCAL-00001" summary="增加了项目需要的环境">
       <created>1560078592823</created>
@@ -613,11 +601,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560165573188</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="删除了部分无用链接">
+      <created>1560168468663</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1560168468663</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34076000" />
+    <option name="totallyTimeSpent" value="34369000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -632,7 +627,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.19705094" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.19705094" />
       <window_info id="Structure" order="1" sideWeight="0.50110376" side_tool="true" weight="0.22397476" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -642,8 +637,8 @@
       <window_info id="Web" order="7" sideWeight="0.5011601" side_tool="true" weight="0.19034852" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.39106146" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" visible="true" weight="0.3980447" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.39106146" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.3980447" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32914925" />
@@ -730,7 +725,8 @@
     <MESSAGE value="修改了Sno1之类的错误" />
     <MESSAGE value="AutoCommit!!!!!!!!!" />
     <MESSAGE value="将所有Gradepoint改成GPA，以及其他一些bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="将所有Gradepoint改成GPA，以及其他一些bug" />
+    <MESSAGE value="删除了部分无用链接" />
+    <option name="LAST_COMMIT_MESSAGE" value="删除了部分无用链接" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1020,8 +1016,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manager.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="61" column="70" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="70" />
+        <state relative-caret-position="1612">
+          <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
         </state>
       </provider>
     </entry>
