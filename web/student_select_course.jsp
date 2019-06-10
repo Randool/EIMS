@@ -90,7 +90,7 @@
                                         rs = stmt.executeQuery(sql);
                                         rs.next();
                                         String sdept = rs.getString("Sdept"); //获取系
-                                        sql = String.format("select * from course where Sdept='%s'", sdept);
+                                        sql = String.format("select * from course where Cdept='%s'", sdept);
                                         rs = stmt.executeQuery(sql);
                                         Statement stmt1 = conn.createStatement();
                                         ResultSet rs1;
@@ -105,7 +105,7 @@
                                             sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
                                             rs1 = stmt1.executeQuery(sql);
                                             rs1.next();
-                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Sdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + rs.getString("Addr") + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno1=" + Sno + "&panduan=select'>选择</a>" + "</td></tr>");
+                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + rs.getString("Addr") + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno=" + Sno + "&panduan=select'>选择</a>" + "</td></tr>");
                                         }
                                         stmt.close();
                                         stmt1.close();

@@ -33,7 +33,7 @@
                 panduan2 = 0;
             }//判断学号
             if (panduan2 == 1) {
-                sql = String.format("update teacher set Tname='%s',Tsex='%s',Sdept='%s',Password='%s' where Tno='%s'", Tname, Tsex, Sdept, password_get, Tno);
+                sql = String.format("update teacher set Tname='%s',Tsex='%s',Tdept='%s',Password='%s' where Tno='%s'", Tname, Tsex, Sdept, password_get, Tno);
                 stmt.executeUpdate(sql);
                 stmt.close();
                 conn.close();

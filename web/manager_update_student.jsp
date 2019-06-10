@@ -25,7 +25,7 @@
                 out.print("<script>alert('姓名为空！'); window.location='manager_update_student.jsp?Sno=" + Sno + "&panduan=false' </script>");
                 panduan2 = 0;
             }//判断姓名
-            String Ssex = request.getParameter("Ssex");
+            String Ssex = new String(request.getParameter("Ssex").getBytes("ISO8859_1"));
             String Sdept = request.getParameter("Sdept");
             String password_get = request.getParameter("password");
             if (password_get == null || password_get.length() == 0) {

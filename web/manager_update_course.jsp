@@ -198,19 +198,19 @@
                                             <div class="col-md-12 margin-bottom-15">
                                                 <label for="singleSelect">所属系</label>
                                                 <select class="form-control margin-bottom-15" name="Sdept">
-                                                    <option value="计算机工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Sdept").equals("计算机工程系")) {
+                                                    <option value="计算机工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Cdept").equals("计算机工程系")) {
                                                         out.print("selected = 'selected'");
                                                     }%>>计算机工程系
                                                     </option>
-                                                    <option value="通信工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Sdept").equals("通信工程系")) {
+                                                    <option value="通信工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Cdept").equals("通信工程系")) {
                                                         out.print("selected = 'selected'");
                                                     }%>>通信工程系
                                                     </option>
-                                                    <option value="软件工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Sdept").equals("软件工程系")) {
+                                                    <option value="软件工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Cdept").equals("软件工程系")) {
                                                         out.print("selected = 'selected'");
                                                     }%>>软件工程系
                                                     </option>
-                                                    <option value="信息工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Sdept").equals("信息工程系")) {
+                                                    <option value="信息工程系" <% if (panduan != null && panduan.equals("false") && rs.getString("Cdept").equals("信息工程系")) {
                                                         out.print("selected = 'selected'");
                                                     }%>>信息工程系
                                                     </option>
@@ -234,7 +234,7 @@
                                             <div class="col-md-6 margin-bottom-15">
                                                 <label for="Adr" class="control-label">上课地点</label>
                                                 <input type="text" class="form-control" name="Adr"
-                                                       value="<%if(panduan!=null&&panduan.equals("false"))out.print(rs.getString("Adr"));%>">
+                                                       value="<%if(panduan!=null&&panduan.equals("false"))out.print(rs.getString("Addr"));%>">
                                             </div>
                                             <div class="col-md-12">
                                                 <input type="hidden" name="panduan" value="update"/>
