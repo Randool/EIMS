@@ -78,30 +78,34 @@
                             <div class="panel-heading" style="text-align:center"><h1>选课表</h1></div>
                             <div class="panel-body">
                                 <%
-                                    Statement stmt = conn.createStatement();
-                                    sql = String.format("select * from sc,course where sc.cno=course.cno and Sno='%s'", Sno);
-                                    ResultSet rs = stmt.executeQuery(sql);
-                                    out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>学分</th><th>课程系别</th><th>教师</th><th>授课星期</th><th>授课时间</th><th>课程容量</th><th>已选人数</th><th>授课地点</th><th>退选课程</th></tr></thead>");
-                                    out.println("<tbody>");
-                                    Statement stmt1 = conn.createStatement();
-                                    ResultSet rs1;
-                                    while (rs.next()) {
-                                        String tempTno = rs.getString("Tno");
-                                        sql = String.format("select * from teacher where Tno='%s'", tempTno);
-                                        rs1 = stmt1.executeQuery(sql);
-                                        rs1.next();
-                                        String tname = rs1.getString("Tname");
+                                    try {
+                                        Statement stmt = conn.createStatement();
+                                        sql = String.format("select * from sc,course where sc.cno=course.cno and Sno='%s'", Sno);
+                                        ResultSet rs = stmt.executeQuery(sql);
+                                        out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>学分</th><th>课程系别</th><th>教师</th><th>授课星期</th><th>授课时间</th><th>课程容量</th><th>已选人数</th><th>授课地点</th><th>退选课程</th></tr></thead>");
+                                        out.println("<tbody>");
+                                        Statement stmt1 = conn.createStatement();
+                                        ResultSet rs1;
+                                        while (rs.next()) {
+                                            String tempTno = rs.getString("Tno");
+                                            sql = String.format("select * from teacher where Tno='%s'", tempTno);
+                                            rs1 = stmt1.executeQuery(sql);
+                                            rs1.next();
+                                            String tname = rs1.getString("Tname");
 
-                                        String tempCno = rs.getString("Cno");
-                                        sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
-                                        rs1 = stmt1.executeQuery(sql);
-                                        rs1.next();
-                                        out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Ccredit") + "</td><td>" + rs.getString("Sdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + rs.getString("Adr") + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno1=" + Sno + "&panduan=cancel'>退选</a>" + "</td></tr>");
+                                            String tempCno = rs.getString("Cno");
+                                            sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
+                                            rs1 = stmt1.executeQuery(sql);
+                                            rs1.next();
+                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + rs.getString("Addr") + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno=" + Sno + "&panduan=cancel'>退选</a>" + "</td></tr>");
+                                        }
+                                        out.println("</tbody></table>");
+                                        stmt.close();
+                                        stmt1.close();
+                                        conn.close();
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
                                     }
-                                    out.println("</tbody></table>");
-                                    stmt.close();
-                                    stmt1.close();
-                                    conn.close();
                                 %>
                             </div>
                         </div>

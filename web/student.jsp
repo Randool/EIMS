@@ -76,12 +76,16 @@
 
             <h1>
                 <%
-                    Statement stmt = conn.createStatement();
-                    sql = String.format("select * from student where Sno='%s'", Sno);
-                    ResultSet rs = stmt.executeQuery(sql);
-                    rs.next();
-                    String sname = rs.getString("Sname");
-                    out.println(sname);
+                    try {
+                        Statement stmt = conn.createStatement();
+                        sql = String.format("select * from student where Sno='%s'", Sno);
+                        ResultSet rs = stmt.executeQuery(sql);
+                        rs.next();
+                        String sname = rs.getString("Sname");
+                        out.println(sname);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 %>
             </h1>
             <p>欢迎来到湖南大学信息科学与工程学院教务管理系统</p>

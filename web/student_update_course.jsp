@@ -59,6 +59,7 @@
                     }
                     if (flag.equals("false")) { //没冲突，通过第三道检验
                         sql = String.format("insert into SC(Sno,Cno) values('%s','%s')", Sno, Cno);
+                        System.out.println(sql);
                         stmt.executeUpdate(sql);
                         stmt.close();
                         conn.close();
@@ -66,18 +67,18 @@
                     } else {
                         stmt.close();
                         conn.close();
-                        out.print("<script>alert('课程时间有冲突！'); window.location='student_select_course.jsp?Sno=" + Sno + "' </script>");
+                        out.print(String.format("<script>alert('课程时间有冲突！'); window.location='student_select_course.jsp?Sno=%s' </script>", Sno));
                     }
                 }
             }
         } else if (panduan.equals("cancel")) {
-            String Sno = request.getParameter("Sno1");
+            String Sno = request.getParameter("Sno");
             String Cno = request.getParameter("Cno");
             sql = String.format("delete from sc where Sno='%s' and Cno='%s'", Sno, Cno);
             stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
-            out.print("<script>alert('删除成功'); window.location='student_elective_result.jsp?Sno=" + Sno + "' </script>");
+            out.print(String.format("<script>alert('删除成功'); window.location='student_elective_result.jsp?Sno=%s' </script>", Sno));
         }
     } catch (SQLException e) {
         e.printStackTrace();
