@@ -14,13 +14,12 @@
         if (panduan.equals("select")) {//选择课程
             sql = String.format("select * from sc where Sno='%s' and Cno='%s'", Sno, Cno);
             ResultSet rs = stmt.executeQuery(sql);
-            int i = 0;
-            while (rs.next()) {
-                i++;
-                break;
+            boolean selected = false;
+            if (rs.next()) {
+                selected = true;
             }
-            //System.out.println(i);
-            if (i != 0) {
+            //System.out.println(selected);
+            if (selected) {
                 out.print("<script>alert('你已选择过该课程！'); window.location='student_select_course.jsp?Sno=" + Sno + "' </script>");
                 stmt.close();
                 conn.close();
@@ -32,7 +31,6 @@
                 rs = stmt.executeQuery(String.format("select * from course where Cno='%s'", Cno));
                 rs.next();
                 String capacity = rs.getString("Cap"); //获取容量
-                //	System.out.println(capacity);
                 if (yixuan.equals(capacity)) {
                     out.print("<script>alert('课程容量已满！'); window.location='student_select_course.jsp?Sno=" + Sno + "' </script>");
                     stmt.close();

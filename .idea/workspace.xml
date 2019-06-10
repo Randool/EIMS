@@ -7,13 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f5384e2-ac88-4c92-b7a3-6491a8dc4348" name="Default Changelist" comment="消除了部分bug">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/Chart.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/Chart.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_add_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_course.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_add_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_student.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_add_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_teacher.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/manager_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_course.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_update_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_student.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_update_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_teacher.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_view_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_view_course.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_view_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_view_student.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/manager_view_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_view_teacher.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/student_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/student_update_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/student_view_score.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/student_view_score.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/teacher_export_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_export_course.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -140,53 +147,54 @@
     <session id="-779472462">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.28" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
           <entry key="java" value="1" />
-          <entry key="jsp" value="37" />
+          <entry key="jsp" value="39" />
           <entry key="md" value="1" />
           <entry key="properties" value="6" />
           <entry key="sql" value="1" />
-          <entry key="xml" value="2" />
+          <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="1" />
-          <entry key="JSP" value="37" />
+          <entry key="JSP" value="39" />
           <entry key="Markdown" value="1" />
           <entry key="Properties" value="6" />
           <entry key="SQL" value="1" />
-          <entry key="XML" value="2" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="5" />
-          <entry key="jsp" value="1132" />
+          <entry key="jsp" value="1175" />
           <entry key="md" value="52" />
           <entry key="properties" value="1" />
-          <entry key="txt" value="176" />
+          <entry key="txt" value="210" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JAVA" value="5" />
-          <entry key="JSP" value="1129" />
+          <entry key="JSP" value="1172" />
           <entry key="Markdown" value="52" />
-          <entry key="PLAIN_TEXT" value="176" />
+          <entry key="PLAIN_TEXT" value="210" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="2" />
         </counts>
@@ -196,40 +204,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/student_select_course.jsp">
+        <entry file="file://$PROJECT_DIR$/web/manager_update_student.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-48">
-              <caret line="107" column="498" selection-start-line="107" selection-start-column="498" selection-end-line="107" selection-end-column="498" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/student_elective_result.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="-389">
+              <caret line="95" column="17" lean-forward="true" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/student_update_course.jsp">
+        <entry file="file://$PROJECT_DIR$/web/manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/open/util/OpenConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="232">
+              <caret line="61" column="70" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -260,7 +247,12 @@
       <find>rs</find>
       <find>Adr</find>
       <find>Sno</find>
+      <find>i</find>
       <find>Gradepoint</find>
+      <find>System.out.prin</find>
+      <find>修改/删除学籍</find>
+      <find>修改</find>
+      <find>修改/删除</find>
     </findStrings>
     <replaceStrings>
       <replace>GPA</replace>
@@ -283,7 +275,6 @@
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/student_view_score.jsp" />
         <option value="$PROJECT_DIR$/web/student_view_classtable.jsp" />
-        <option value="$PROJECT_DIR$/web/manager.jsp" />
         <option value="$PROJECT_DIR$/web/manager_add_teacher.jsp" />
         <option value="$PROJECT_DIR$/web/manager_add_student.jsp" />
         <option value="$PROJECT_DIR$/web/manager_add_course.jsp" />
@@ -296,7 +287,6 @@
         <option value="$PROJECT_DIR$/web/teacher_view_grade.jsp" />
         <option value="$PROJECT_DIR$/web/test.jsp" />
         <option value="$PROJECT_DIR$/web/student_select_course.jsp" />
-        <option value="$PROJECT_DIR$/web/manager_update_student.jsp" />
         <option value="$PROJECT_DIR$/src/DBConfig.properties" />
         <option value="$PROJECT_DIR$/web/manager_update_course.jsp" />
         <option value="$PROJECT_DIR$/web/manager_update_teacher.jsp" />
@@ -304,6 +294,8 @@
         <option value="$PROJECT_DIR$/web/student.jsp" />
         <option value="$PROJECT_DIR$/src/com/open/util/OpenConnection.java" />
         <option value="$PROJECT_DIR$/web/student_update_course.jsp" />
+        <option value="$PROJECT_DIR$/web/manager_update_student.jsp" />
+        <option value="$PROJECT_DIR$/web/manager.jsp" />
       </list>
     </option>
   </component>
@@ -329,7 +321,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="130" />
     <option name="y" value="5" />
-    <option name="width" value="1659" />
+    <option name="width" value="1660" />
     <option name="height" value="1025" />
   </component>
   <component name="ProjectView">
@@ -348,28 +340,17 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="0" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="EIMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="EIMS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EIMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EIMS" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EIMS" type="b2602c69:ProjectViewProjectNode" />
@@ -402,6 +383,22 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="0" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -415,7 +412,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -550,7 +547,8 @@
       <workItem from="1560081263521" duration="3203000" />
       <workItem from="1560147978861" duration="2021000" />
       <workItem from="1560154299779" duration="5784000" />
-      <workItem from="1560163681525" duration="1848000" />
+      <workItem from="1560163681525" duration="2143000" />
+      <workItem from="1560167218266" duration="1003000" />
     </task>
     <task id="LOCAL-00001" summary="增加了项目需要的环境">
       <created>1560078592823</created>
@@ -608,11 +606,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560165498276</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="将所有Gradepoint改成GPA，以及其他一些bug">
+      <created>1560165573188</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1560165573188</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32778000" />
+    <option name="totallyTimeSpent" value="34076000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -627,7 +632,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.19369973" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.19705094" />
       <window_info id="Structure" order="1" sideWeight="0.50110376" side_tool="true" weight="0.22397476" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -637,8 +642,8 @@
       <window_info id="Web" order="7" sideWeight="0.5011601" side_tool="true" weight="0.19034852" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.33798882" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.3980447" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.39106146" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" visible="true" weight="0.3980447" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32914925" />
@@ -724,17 +729,12 @@
     <MESSAGE value="修复了若干bug" />
     <MESSAGE value="修改了Sno1之类的错误" />
     <MESSAGE value="AutoCommit!!!!!!!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="AutoCommit!!!!!!!!!" />
+    <MESSAGE value="将所有Gradepoint改成GPA，以及其他一些bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="将所有Gradepoint改成GPA，以及其他一些bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web/manager_update_student.jsp</url>
-          <line>27</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/web/manager_update_teacher.jsp</url>
           <line>27</line>
@@ -742,10 +742,10 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web/student_update_course.jsp</url>
-          <line>13</line>
+          <url>file://$PROJECT_DIR$/web/manager_update_student.jsp</url>
+          <line>18</line>
           <properties />
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -868,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/manager_add_student.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -984,17 +977,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager_update_student.jsp">
+    <entry file="file://$PROJECT_DIR$/web/student_update_course.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
+        <state relative-caret-position="-690">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/student_select_course.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/open/util/OpenConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-48">
-          <caret line="107" column="498" selection-start-line="107" selection-start-column="498" selection-end-line="107" selection-end-column="498" />
+        <state relative-caret-position="283">
+          <caret line="36" column="37" lean-forward="true" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1005,20 +1001,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/open/util/OpenConnection.java">
+    <entry file="file://$PROJECT_DIR$/web/student_select_course.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="2599">
+          <caret line="126" column="104" lean-forward="true" selection-start-line="126" selection-start-column="104" selection-end-line="126" selection-end-column="104" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/student_update_course.jsp">
+    <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager_update_student.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="-389">
+          <caret line="95" column="17" lean-forward="true" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="61" column="70" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="70" />
         </state>
       </provider>
     </entry>

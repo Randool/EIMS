@@ -48,7 +48,7 @@
                 <ul class="templatemo-submenu">
                     <li><a href="manager_view_student.jsp">查看学籍</a></li>
                     <li><a href="manager_add_student.jsp">注册学籍</a></li>
-                    <li><a href="manager_update_student.jsp">修改/删除学籍</a></li>
+                    <%--<li><a href="manager_update_student.jsp">修改/删除学籍</a></li>--%>
                 </ul>
             </li>
             <li class="sub open">
@@ -59,7 +59,7 @@
                 <ul class="templatemo-submenu">
                     <li><a href="manager_view_teacher.jsp">查看教师信息</a></li>
                     <li><a href="manager_add_teacher.jsp">注册教师</a></li>
-                    <li><a href="manager_update_teacher.jsp">修改/删除教师信息</a></li>
+                    <%--<li><a href="manager_update_teacher.jsp">修改/删除教师信息</a></li>--%>
                 </ul>
             </li>
             <li class="sub open">
@@ -70,7 +70,7 @@
                 <ul class="templatemo-submenu">
                     <li><a href="manager_view_course.jsp">查看课程</a></li>
                     <li><a href="manager_add_course.jsp">增加课程</a></li>
-                    <li><a href="manager_update_course.jsp">修改/删除课程</a></li>
+                    <%--<li><a href="manager_update_course.jsp">修改/删除课程</a></li>--%>
                 </ul>
             </li>
             <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign
@@ -84,7 +84,7 @@
                 <%
                     Statement stmt = null;
                     sql = String.format("select * from manager where Mno='%s'", Mno);
-                    System.out.println(sql);
+//                    System.out.println(sql);
                     try {
                         stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(sql);
