@@ -8,16 +8,16 @@
     Cookie cookies[] = request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组里面
     Cookie sCookie = null;
     String svalue = null;
-    String sname = null;
+//    String sname = null;
 
     for (int i = 0; i < cookies.length - 1; i++) {    //用一个循环语句遍历刚才建立的Cookie对象数组
         sCookie = cookies[i]; //取出数组中的一个Cookie对象
         if (sCookie.getName().equals("user_no")) {
-            sname = sCookie.getName(); //取得这个Cookie的名字
+//            sname = sCookie.getName(); //取得这个Cookie的名字
             svalue = sCookie.getValue(); //取得这个Cookie的内容
         }
     }
-    String user_no = svalue;//index.jsp的传递参数
+    String user_no = svalue;    //index.jsp的传递参数
 %>
 <!DOCTYPE html>
 <head>
@@ -95,18 +95,22 @@
                             <div class="panel-heading" style="text-align:center"><h1>学生成绩</h1></div>
                             <div class="panel-body">
                                 <%
-                                    Statement stmt = conn.createStatement();
-                                    sql = String.format("SELECT student.Sno,Sname,Ssex,student.Sdept,course.Cno,course.Cname,Grade,GPA FROM student,sc,course,teacher WHERE student.Sno=sc.Sno and course.Cno=sc.Cno and course.Tno=teacher.Tno and course.Tno='%s'", user_no);
-                                    ResultSet rs = stmt.executeQuery(sql);
-                                    out.println("<table class='table table-striped'><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>所属系</th><th>课程号</th><th>课程名</th><th>成绩</th><th>绩点</th></tr></thead>");
-                                    out.println("<tbody>");
-                                    while (rs.next()) {
-                                        out.println("<tr><td>" + rs.getString("student.Sno") + "</td><td>" + rs.getString("Sname") + "</td><td>" + rs.getString("Ssex") + "</td><td>" + rs.getString("student.Sdept") + "</td><td>" + rs.getString("course.Cno") + "</td><td>" + rs.getString("course.Cname") + "</td><td>" + rs.getString("Grade") + "</td><td>" + rs.getString("GPA") + "</td><td>" + "<a href='teacher_update_grade.jsp?Cno=" + rs.getString("Cno") + "&Sno=" + rs.getString("student.Sno") + "&user_no=" + user_no + "&change=first_admit'>修改成绩</a>" + "</td></tr>");
+                                    try {
+                                        Statement stmt = conn.createStatement();
+                                        sql = String.format("SELECT student.Sno,Sname,Ssex,student.Sdept,course.Cno,course.Cname,Grade,GPA FROM student,sc,course,teacher WHERE student.Sno=sc.Sno and course.Cno=sc.Cno and course.Tno=teacher.Tno and course.Tno='%s'", user_no);
+                                        ResultSet rs = stmt.executeQuery(sql);
+                                        out.println("<table class='table table-striped'><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>所属系</th><th>课程号</th><th>课程名</th><th>成绩</th><th>绩点</th></tr></thead>");
+                                        out.println("<tbody>");
+                                        while (rs.next()) {
+                                            out.println("<tr><td>" + rs.getString("student.Sno") + "</td><td>" + rs.getString("Sname") + "</td><td>" + rs.getString("Ssex") + "</td><td>" + rs.getString("student.Sdept") + "</td><td>" + rs.getString("course.Cno") + "</td><td>" + rs.getString("course.Cname") + "</td><td>" + rs.getString("Grade") + "</td><td>" + rs.getString("GPA") + "</td><td>" + "<a href='teacher_update_grade.jsp?Cno=" + rs.getString("Cno") + "&Sno=" + rs.getString("student.Sno") + "&user_no=" + user_no + "&change=first_admit'>修改成绩</a>" + "</td></tr>");
+                                        }
+                                        out.println("</tbody></table>");
+                                        rs.close();
+                                        stmt.close();
+                                        conn.close();
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
                                     }
-                                    out.println("</tbody></table>");
-                                    rs.close();
-                                    stmt.close();
-                                    conn.close();
                                 %>
                             </div>
                         </div>

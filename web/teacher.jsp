@@ -81,17 +81,25 @@
         <div class="templatemo-content">
             <h1>
                 <%
-                    Statement stmt = conn.createStatement();
                     sql = String.format("select * from teacher where Tno='%s'", user_no);
-                    ResultSet rs = stmt.executeQuery(sql);
-                    rs.next(); //有毒！
-                    String tname = rs.getString("Tname");
+                    try {
+                        Statement stmt = conn.createStatement();
+                        ResultSet rs = stmt.executeQuery(sql);
+                        rs.next(); //有毒！
+                        String tname = rs.getString("Tname");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     out.println(tname);
                 %>
             </h1>
             <p>欢迎来到湖南大学信息科学与工程学院教务管理系统</p>
             <%
-                conn.close();
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             %>
         </div>
     </div>

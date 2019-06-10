@@ -95,19 +95,23 @@
                             <div class="panel-heading" style="text-align:center"><h1>您的课程信息</h1></div>
                             <div class="panel-body">
                                 <%
-                                    Statement stmt = conn.createStatement();
-                                    sql = "SELECT Cno,Cname,teacher.Tdept,Credit FROM course,teacher where teacher.Tno=course.Tno and teacher.Tno='" + user_no + "'";
-                                    System.out.print(sql);
-                                    ResultSet rs = stmt.executeQuery(sql);
-                                    out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>系名</th><th>学分</th></tr></thead>");
-                                    out.println("<tbody>");
-                                    while (rs.next()) {
-                                        out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("teacher.Tdept") + "</td><td>" + rs.getString("Credit") + "</td></tr>");
+                                    try {
+                                        Statement stmt = conn.createStatement();
+                                        sql = String.format("SELECT Cno,Cname,teacher.Tdept,Credit FROM course,teacher where teacher.Tno=course.Tno and teacher.Tno='%s'", user_no);
+                                        System.out.print(sql);
+                                        ResultSet rs = stmt.executeQuery(sql);
+                                        out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>系名</th><th>学分</th></tr></thead>");
+                                        out.println("<tbody>");
+                                        while (rs.next()) {
+                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("teacher.Tdept") + "</td><td>" + rs.getString("Credit") + "</td></tr>");
+                                        }
+                                        out.println("</tbody></table>");
+                                        rs.close();
+                                        stmt.close();
+                                        conn.close();
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
                                     }
-                                    out.println("</tbody></table>");
-                                    rs.close();
-                                    stmt.close();
-                                    conn.close();
                                 %>
                             </div>
                         </div>

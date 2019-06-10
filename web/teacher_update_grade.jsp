@@ -33,70 +33,70 @@
 
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
-    Statement stmt = conn.createStatement();
 
-    if (change == null && panduan != null) {//判断是否更新
-        int grade = 0;
-        int flag = 1;//判断标志
+    try {
+        Statement stmt = conn.createStatement();
+        if (change == null && panduan != null) {//判断是否更新
+            int grade = 0;
+            int flag = 1;//判断标志
+            if (Newgrade.equals("")) {
+                grade = -1;
+            } else if (Newgrade.length() > 3) {
+                grade = -1;
+            } else {
+                grade = Integer.parseInt(Newgrade);
+            }
 
-        if (Newgrade.equals("")) {
-            grade = -1;
-        } else if (Newgrade.length() > 3) {
-            grade = -1;
-        } else {
-            grade = Integer.parseInt(Newgrade);
-        }
-
-        if (Cno.equals("")) {
-            System.out.print("Cno");
-            out.print("<script>alert('课程号为空！');window.location.href='teacher_update_grade.jsp'  </script>");
-            flag = 0;
-        } else if (Cname.equals("") || Cname == null) {
-            System.out.print("Cname");
-            out.print("<script>alert('课程名为空！');window.location.href='teacher_update_grade.jsp' </script>");
-            flag = 0;
-        } else if (Sno.length() != 12) {
-            System.out.print("Sno");
-            out.print("<script>alert('学生学号长度不为12');window.location.href='teacher_update_grade.jsp' </script>");
-            flag = 0;
-        } else if (grade < 0 || grade > 100) {
-            System.out.print("grade" + user_no);
-            out.print("<script>alert('输入[0,100]的成绩值');window.location='teacher_update_grade.jsp'</script>");
-            flag = 0;
-        }
-        System.out.print(flag);
-        if (flag == 1) {
-            System.out.print("flag");
-            sql = String.format("select * from course where Cno='%s'and Cname='%s'", Cno, Cname);
-            rs = stmt.executeQuery(sql);
-            if (rs.next() == false) {
-                out.print("<script>alert('课程号和课程名不匹配');window.location='teacher_update_grade.jsp' </script>");
-//                flag = 0;
+            if (Cno.equals("")) {
+                System.out.print("Cno");
+                out.print("<script>alert('课程号为空！');window.location.href='teacher_update_grade.jsp'  </script>");
+                flag = 0;
+            } else if (Cname.equals("")) {
+                System.out.print("Cname");
+                out.print("<script>alert('课程名为空！');window.location.href='teacher_update_grade.jsp' </script>");
+                flag = 0;
+            } else if (Sno.length() != 12) {
+                System.out.print("Sno");
+                out.print("<script>alert('学生学号长度不为12');window.location.href='teacher_update_grade.jsp' </script>");
+                flag = 0;
+            } else if (grade < 0 || grade > 100) {
+                System.out.print("grade" + user_no);
+                out.print("<script>alert('输入[0,100]的成绩值');window.location='teacher_update_grade.jsp'</script>");
+                flag = 0;
             }
-            sql = String.format("select * from student where Sno='%s'", Sno);
-            rs = stmt.executeQuery(sql);
-            if (rs.next() == false) {
-                out.print("<script>alert('不存在该学生');window.location='teacher_update_grade.jsp' </script>");
-//                flag = 0;
+            System.out.print(flag);
+            if (flag == 1) {
+                System.out.print("flag");
+                sql = String.format("select * from course where Cno='%s'and Cname='%s'", Cno, Cname);
+                rs = stmt.executeQuery(sql);
+                if (!rs.next()) {
+                    out.print("<script>alert('课程号和课程名不匹配');window.location='teacher_update_grade.jsp' </script>");
+                }
+                sql = String.format("select * from student where Sno='%s'", Sno);
+                rs = stmt.executeQuery(sql);
+                if (!rs.next()) {
+                    out.print("<script>alert('不存在该学生');window.location='teacher_update_grade.jsp' </script>");
+                }
+                sql = String.format("select * from sc,course,teacher where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'", Sno, Cno, user_no);
+                rs = stmt.executeQuery(sql);
+                if (!rs.next()) {
+                    out.print("<script>alert('该学生不在你所教的学生范围内');window.location='teacher_update_grade.jsp' </script>");
+                }
+                sql = String.format("update sc,course,teacher set grade=%d where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'", grade, Sno, Cno, user_no);
+                stmt.executeUpdate(sql);
+                out.print("<script>alert('提交成功');window.location='teacher_view_grade.jsp' </script>");
+                rs.close();
+                stmt.close();
+                conn.close();
             }
-            sql = String.format("select * from sc,course,teacher where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'", Sno, Cno, user_no);
+        } else if (change != null && change.length() != 0) {
+            sql = String.format("select Cname,Sdept from course where Cno='%s'", Cno);
+            System.out.println(sql);
             rs = stmt.executeQuery(sql);
-            if (rs.next() == false) {
-                out.print("<script>alert('该学生不在你所教的学生范围内');window.location='teacher_update_grade.jsp' </script>");
-//                flag = 0;
-            }
-            sql = String.format("update sc,course,teacher set grade=%d where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'", grade, Sno, Cno, user_no);
-            stmt.executeUpdate(sql);
-            out.print("<script>alert('提交成功');window.location='teacher_view_grade.jsp' </script>");
-            rs.close();
-            stmt.close();
-            conn.close();
+            rs.next();
         }
-    } else if (change != null && change.length() != 0) {
-        sql = String.format("select Cname,Sdept from course where Cno='%s'", Cno);
-        System.out.println(sql);
-        rs = stmt.executeQuery(sql);
-        rs.next();
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 %>
 

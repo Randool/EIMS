@@ -9,12 +9,11 @@
     <list default="true" id="6f5384e2-ac88-4c92-b7a3-6491a8dc4348" name="Default Changelist" comment="增加了">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConfig.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_add_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_add_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_student.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_add_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_add_teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_update_student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_student.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/teacher_export_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_export_course.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/teacher_update_grade.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_update_grade.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/teacher_view_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_view_course.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/teacher_view_grade.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_view_grade.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -143,13 +142,14 @@
         <counts>
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="jsp" value="23" />
+          <entry key="jsp" value="28" />
           <entry key="md" value="1" />
           <entry key="properties" value="1" />
           <entry key="sql" value="1" />
@@ -158,7 +158,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSP" value="23" />
+          <entry key="JSP" value="28" />
           <entry key="Markdown" value="1" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="1" />
@@ -167,16 +167,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="jsp" value="368" />
+          <entry key="jsp" value="865" />
           <entry key="md" value="52" />
-          <entry key="txt" value="98" />
+          <entry key="txt" value="109" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSP" value="366" />
+          <entry key="JSP" value="863" />
           <entry key="Markdown" value="52" />
-          <entry key="PLAIN_TEXT" value="98" />
+          <entry key="PLAIN_TEXT" value="109" />
           <entry key="SQL" value="2" />
         </counts>
       </usages-collector>
@@ -185,82 +185,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager.jsp">
+        <entry file="file://$PROJECT_DIR$/web/teacher.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+            <state relative-caret-position="2043">
+              <caret line="112" column="36" lean-forward="true" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager_add_course.jsp">
+        <entry file="file://$PROJECT_DIR$/web/teacher_view_course.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager_add_student.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="60" selection-start-column="60" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager_update_course.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1660">
-              <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+            <state relative-caret-position="258">
+              <caret line="104" column="59" lean-forward="true" selection-start-line="104" selection-start-column="59" selection-end-line="104" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/manager_update_student.jsp">
+        <entry file="file://$PROJECT_DIR$/web/teacher_view_grade.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager_update_teacher.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="171" column="142" selection-start-line="171" selection-start-column="142" selection-end-line="171" selection-end-column="142" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager_view_course.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="93" column="193" selection-start-line="93" selection-start-column="193" selection-end-line="93" selection-end-column="193" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager_view_student.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/manager_view_teacher.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            <state relative-caret-position="437">
+              <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -282,13 +228,14 @@
       <find>cookie</find>
       <find>sname</find>
       <find>Adr</find>
-      <find>stmt</find>
       <find>rs1</find>
       <find>statement</find>
       <find>Sno</find>
       <find>template-page-wrapper</find>
       <find>out.println(Sno)</find>
       <find>rs</find>
+      <find>stmt</find>
+      <find>Tname</find>
     </findStrings>
     <replaceStrings>
       <replace>GPA</replace>
@@ -308,30 +255,30 @@
         <option value="$PROJECT_DIR$/web/test.jsp" />
         <option value="$PROJECT_DIR$/src/com/open/util/OpenConnection.java" />
         <option value="$PROJECT_DIR$/src/DBConfig.properties" />
-        <option value="$PROJECT_DIR$/web/manager_view_student.jsp" />
-        <option value="$PROJECT_DIR$/web/teacher.jsp" />
-        <option value="$PROJECT_DIR$/web/teacher_update_grade.jsp" />
-        <option value="$PROJECT_DIR$/web/teacher_view_course.jsp" />
-        <option value="$PROJECT_DIR$/web/teacher_export_course.jsp" />
-        <option value="$PROJECT_DIR$/web/teacher_view_grade.jsp" />
         <option value="$PROJECT_DIR$/web/manager_view_teacher.jsp" />
-        <option value="$PROJECT_DIR$/web/manager_update_teacher.jsp" />
-        <option value="$PROJECT_DIR$/web/manager_view_course.jsp" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/com/open/util/Test.java" />
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/student_view_score.jsp" />
-        <option value="$PROJECT_DIR$/web/manager_add_course.jsp" />
         <option value="$PROJECT_DIR$/web/student_view_classtable.jsp" />
         <option value="$PROJECT_DIR$/web/student_elective_result.jsp" />
         <option value="$PROJECT_DIR$/web/student_select_course.jsp" />
         <option value="$PROJECT_DIR$/web/student_update_course.jsp" />
         <option value="$PROJECT_DIR$/web/student.jsp" />
         <option value="$PROJECT_DIR$/web/manager.jsp" />
-        <option value="$PROJECT_DIR$/web/manager_add_student.jsp" />
         <option value="$PROJECT_DIR$/web/manager_add_teacher.jsp" />
+        <option value="$PROJECT_DIR$/web/manager_add_student.jsp" />
+        <option value="$PROJECT_DIR$/web/manager_add_course.jsp" />
         <option value="$PROJECT_DIR$/web/manager_update_course.jsp" />
         <option value="$PROJECT_DIR$/web/manager_update_student.jsp" />
+        <option value="$PROJECT_DIR$/web/manager_update_teacher.jsp" />
+        <option value="$PROJECT_DIR$/web/manager_view_course.jsp" />
+        <option value="$PROJECT_DIR$/web/manager_view_student.jsp" />
+        <option value="$PROJECT_DIR$/web/teacher.jsp" />
+        <option value="$PROJECT_DIR$/web/teacher_export_course.jsp" />
+        <option value="$PROJECT_DIR$/web/teacher_update_grade.jsp" />
+        <option value="$PROJECT_DIR$/web/teacher_view_course.jsp" />
+        <option value="$PROJECT_DIR$/web/teacher_view_grade.jsp" />
       </list>
     </option>
   </component>
@@ -365,12 +312,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="EIMS1.1" type="58d84e3e:PackageViewProjectNode" />
-              <item name="EIMS1.0" type="616d4139:PackageViewModuleNode" />
+              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="0" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
           </expand>
           <select />
@@ -397,17 +349,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+      <pane id="PackagesPane">
+        <subPane>
           <expand>
             <path>
-              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="0" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="EIMS1.1" type="58d84e3e:PackageViewProjectNode" />
+              <item name="EIMS1.0" type="616d4139:PackageViewModuleNode" />
             </path>
           </expand>
           <select />
@@ -418,7 +365,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560084448378" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560149327095" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -559,6 +506,7 @@
       <workItem from="1560068961447" duration="3287000" />
       <workItem from="1560078366728" duration="2852000" />
       <workItem from="1560081263521" duration="3203000" />
+      <workItem from="1560147978861" duration="1343000" />
     </task>
     <task id="LOCAL-00001" summary="增加了项目需要的环境">
       <created>1560078592823</created>
@@ -581,11 +529,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560083262994</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="增加了处理异常的代码">
+      <created>1560148796028</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560148796028</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23125000" />
+    <option name="totallyTimeSpent" value="24468000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -692,19 +647,8 @@
     <MESSAGE value="增加了项目需要的环境" />
     <MESSAGE value="handle了不少exception，累了" />
     <MESSAGE value="修改了Student相关页面Sno最终变为null的逻辑漏洞。目测teacher、manager也有这种问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了Student相关页面Sno最终变为null的逻辑漏洞。目测teacher、manager也有这种问题" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web/manager_update_student.jsp</url>
-          <line>10</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="增加了处理异常的代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了处理异常的代码" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/open/util/OpenConnextion.java" />
@@ -769,20 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/teacher.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-553">
-          <caret line="94" column="14" selection-start-line="94" selection-start-column="14" selection-end-line="94" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/teacher_update_grade.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3197">
-          <caret line="95" column="21" lean-forward="true" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/open/util/OpenConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="805">
@@ -790,27 +720,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/teacher_view_course.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="97" column="51" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/teacher_export_course.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="137" column="78" lean-forward="true" selection-start-line="137" selection-start-column="78" selection-end-line="137" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/teacher_view_grade.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="106" column="47" lean-forward="true" selection-start-line="106" selection-start-column="47" selection-end-line="106" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -904,31 +813,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager_update_teacher.jsp">
+    <entry file="file://$PROJECT_DIR$/web/manager_add_teacher.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="171" column="142" selection-start-line="171" selection-start-column="142" selection-end-line="171" selection-end-column="142" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager_view_course.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="93" column="193" selection-start-line="93" selection-start-column="193" selection-end-line="93" selection-end-column="193" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager_view_student.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager_view_teacher.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        <state relative-caret-position="253">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -941,36 +829,92 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manager_add_course.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="49" lean-forward="true" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager_add_teacher.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="368">
+          <caret line="79" column="9" lean-forward="true" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manager_add_student.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="60" selection-start-column="60" selection-end-column="60" />
+        <state relative-caret-position="567">
+          <caret line="46" column="32" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manager_update_course.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1660">
-          <caret line="82" column="7" lean-forward="true" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+        <state relative-caret-position="207">
+          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/manager_update_student.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        <state relative-caret-position="529">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager_update_teacher.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="51" column="28" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager_view_course.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="96" column="51" lean-forward="true" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager_view_student.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="86" column="35" lean-forward="true" selection-start-line="86" selection-start-column="35" selection-end-line="86" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager_view_teacher.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/teacher_export_course.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="100" column="59" selection-start-line="100" selection-start-column="59" selection-end-line="100" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/teacher_update_grade.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-667">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/teacher.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2043">
+          <caret line="112" column="36" lean-forward="true" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/teacher_view_course.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="104" column="59" lean-forward="true" selection-start-line="104" selection-start-column="59" selection-end-line="104" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/teacher_view_grade.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
         </state>
       </provider>
     </entry>

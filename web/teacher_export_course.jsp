@@ -91,12 +91,14 @@
 
             <h1>
                 <%
-                    Statement stmt = conn.createStatement();
-                    sql = String.format("select * from teacher where Tno='%s'", user_no);
-                    ResultSet rs = stmt.executeQuery(sql);
-                    rs.next(); //有毒！
-                    String Tname = rs.getString("Tname");
-                    out.println(Tname);
+                    Statement stmt = null;
+                    ResultSet rs = null;
+                    try {
+                        stmt = conn.createStatement();
+                        sql = String.format("select * from teacher where Tno='%s'", user_no);
+                        rs = stmt.executeQuery(sql);
+                        rs.next(); //有毒！
+                        out.println(rs.getString("Tname"));
                 %>
             </h1>
             <p>本学期课表如下</p>
@@ -124,9 +126,7 @@
                                     <tbody>
                                     <%
                                         sql = String.format("SELECT * FROM teacher,course where teacher.Tno='%s' and teacher.Tno=course.Tno", user_no);
-                                        System.out.println(sql);
                                         rs = stmt.executeQuery(sql);
-
                                         String name[] = new String[20];
                                         String week[] = new String[20];
                                         String day[] = new String[20];
@@ -151,22 +151,25 @@
                                     %>
 
                                     <%
-                                                int flag = 1;
-                                                for (int m = 0; m < j; m++) {
-                                                    if (week[m].equals(kk) && day[m].equals(ii)) {
-                                                        out.println("<td>" + name[m] + "</td>");
-                                                        flag = 0;
-                                                        break;
+                                                    int flag = 1;
+                                                    for (int m = 0; m < j; m++) {
+                                                        if (week[m].equals(kk) && day[m].equals(ii)) {
+                                                            out.println("<td>" + name[m] + "</td>");
+                                                            flag = 0;
+                                                            break;
+                                                        }
                                                     }
+                                                    if (flag == 1)
+                                                        out.println("<td></td>");
                                                 }
-                                                if (flag == 1)
-                                                    out.println("<td></td>");
+                                                out.println("</tr>");
                                             }
-                                            out.println("</tr>");
+                                            rs.close();
+                                            stmt.close();
+                                            conn.close();
+                                        } catch (SQLException e) {
+                                            e.printStackTrace();
                                         }
-                                        rs.close();
-                                        stmt.close();
-                                        conn.close();
                                     %>
                                     </tbody>
                                 </table>
