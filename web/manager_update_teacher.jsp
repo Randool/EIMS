@@ -7,45 +7,49 @@
     if (panduan == null) out.print("<script>alert('请指定教工！'); window.location='manager_view_teacher.jsp' </script>");
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
-    Statement stmt = conn.createStatement();
-    if (panduan != null && panduan.equals("true")) {//直接删除
-        String Tno = request.getParameter("Tno");
-        sql = String.format("delete  from teacher where Tno='%s'", Tno);
-        stmt.executeUpdate(sql);
-        stmt.close();
-        conn.close();
-        out.print("<script>alert('删除成功'); window.location='manager_view_teacher.jsp' </script>");
-    } else if (panduan != null && panduan.equals("update")) {//二次更新
-        ResultSet rs;
-        int panduan2 = 1;
-        String Tno = request.getParameter("Tno");
-        String Tname = request.getParameter("Tname");
-        if (Tname == null || Tname.length() == 0) {
-            out.print("<script>alert('姓名为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }//判断姓名
-        String Tsex = request.getParameter("Tsex");
-        String Sdept = request.getParameter("Sdept");
-        String password_get = request.getParameter("password");
-        if (password_get == null || password_get.length() == 0) {
-            out.print("<script>alert('密码为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }//判断学号
-        if (panduan2 == 1) {
-            sql = String.format("update teacher set Tname='%s',Tsex='%s',Sdept='%s',Password='%s' where Tno='%s'", Tname, Tsex, Sdept, password_get, Tno);
+    try {
+        Statement stmt = conn.createStatement();
+        if (panduan != null && panduan.equals("true")) {//直接删除
+            String Tno = request.getParameter("Tno");
+            sql = String.format("delete  from teacher where Tno='%s'", Tno);
             stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
-            out.print("<script>alert('更新成功！'); window.location='manager_view_teacher.jsp' </script>");
-        }
-    }%>
+            out.print("<script>alert('删除成功'); window.location='manager_view_teacher.jsp' </script>");
+        } else if (panduan != null && panduan.equals("update")) {//二次更新
+            ResultSet rs;
+            int panduan2 = 1;
+            String Tno = request.getParameter("Tno");
+            String Tname = request.getParameter("Tname");
+            if (Tname == null || Tname.length() == 0) {
+                out.print("<script>alert('姓名为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }//判断姓名
+            String Tsex = request.getParameter("Tsex");
+            String Sdept = request.getParameter("Sdept");
+            String password_get = request.getParameter("password");
+            if (password_get == null || password_get.length() == 0) {
+                out.print("<script>alert('密码为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }//判断学号
+            if (panduan2 == 1) {
+                sql = String.format("update teacher set Tname='%s',Tsex='%s',Sdept='%s',Password='%s' where Tno='%s'", Tname, Tsex, Sdept, password_get, Tno);
+                stmt.executeUpdate(sql);
+                stmt.close();
+                conn.close();
+                out.print("<script>alert('更新成功！'); window.location='manager_view_teacher.jsp' </script>");
+            }
+        }%>
 <%!ResultSet rs; //作用域%>
 <%
-    if (panduan != null && panduan.equals("false")) {
-        String Tno = request.getParameter("Tno");
-        sql = String.format("select *  from teacher where Tno='%s'", Tno);
-        rs = stmt.executeQuery(sql);
-        rs.next();
+        if (panduan != null && panduan.equals("false")) {
+            String Tno = request.getParameter("Tno");
+            sql = String.format("select *  from teacher where Tno='%s'", Tno);
+            rs = stmt.executeQuery(sql);
+            rs.next();
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 %>
 <!DOCTYPE html>

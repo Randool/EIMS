@@ -7,57 +7,49 @@
     if (panduan == null) out.print("<script>alert('请指定学生！'); window.location='manager_view_student.jsp' </script>");
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
-    Statement stmt = conn.createStatement();
-    if (panduan != null && panduan.equals("true")) {//直接删除
-        String Sno = request.getParameter("Sno");
-        sql = String.format("delete  from student where Sno='%s'", Sno);
-        try {
+    try {
+        Statement stmt = conn.createStatement();
+        if (panduan != null && panduan.equals("true")) {//直接删除
+            String Sno = request.getParameter("Sno");
+            sql = String.format("delete  from student where Sno='%s'", Sno);
             stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        out.print("<script>alert('删除成功'); window.location='manager_view_student.jsp' </script>");
-    } else if (panduan != null && panduan.equals("update")) {//二次更新
-        ResultSet rs;
-        int panduan2 = 1;
-        String Sno = request.getParameter("Sno");
-        String Sname = request.getParameter("Sname");
-        if (Sname == null || Sname.length() == 0) {
-            out.print("<script>alert('姓名为空！'); window.location='manager_update_student.jsp?Sno=" + Sno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }//判断姓名
-        String Ssex = request.getParameter("Ssex");
-        String Sdept = request.getParameter("Sdept");
-        String password_get = request.getParameter("password");
-        if (password_get == null || password_get.length() == 0) {
-            out.print(String.format("<script>alert('密码为空！'); window.location='manager_update_student.jsp?Sno=%s&panduan=false' </script>", Sno));
-            panduan2 = 0;
-        }//判断学号
-        if (panduan2 == 1) {
-            sql = String.format("update student set Sname='%s',Ssex='%s',Sdept='%s',Password='%s' where Sno='%s'", Sname, Ssex, Sdept, password_get, Sno);
-            try {
+            out.print("<script>alert('删除成功'); window.location='manager_view_student.jsp' </script>");
+        } else if (panduan != null && panduan.equals("update")) {//二次更新
+            ResultSet rs;
+            int panduan2 = 1;
+            String Sno = request.getParameter("Sno");
+            String Sname = request.getParameter("Sname");
+            if (Sname == null || Sname.length() == 0) {
+                out.print("<script>alert('姓名为空！'); window.location='manager_update_student.jsp?Sno=" + Sno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }//判断姓名
+            String Ssex = request.getParameter("Ssex");
+            String Sdept = request.getParameter("Sdept");
+            String password_get = request.getParameter("password");
+            if (password_get == null || password_get.length() == 0) {
+                out.print(String.format("<script>alert('密码为空！'); window.location='manager_update_student.jsp?Sno=%s&panduan=false' </script>", Sno));
+                panduan2 = 0;
+            }//判断学号
+            if (panduan2 == 1) {
+                sql = String.format("update student set Sname='%s',Ssex='%s',Sdept='%s',Password='%s' where Sno='%s'", Sname, Ssex, Sdept, password_get, Sno);
                 stmt.executeUpdate(sql);
                 stmt.close();
                 conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
+                out.print("<script>alert('更新成功！'); window.location='manager_view_student.jsp' </script>");
             }
-            out.print("<script>alert('更新成功！'); window.location='manager_view_student.jsp' </script>");
-        }
-    }%>
+        }%>
 <%!ResultSet rs; //作用域%>
 <%
-    if (panduan != null && panduan.equals("false")) {
-        String Sno = request.getParameter("Sno");
-        sql = String.format("select *  from student where Sno='%s'", Sno);
-        try {
+        if (panduan != null && panduan.equals("false")) {
+            String Sno = request.getParameter("Sno");
+            sql = String.format("select *  from student where Sno='%s'", Sno);
             rs = stmt.executeQuery(sql);
             rs.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 %>
 <!DOCTYPE html>

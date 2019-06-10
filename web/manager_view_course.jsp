@@ -27,7 +27,7 @@
     <div class="navbar-header">
         <div class="logo"><h1>管理员系统</h1></div>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">李辰</span>
+            <span class="sr-only"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -85,17 +85,20 @@
                             <div class="panel-heading" style="text-align:center"><h1>课程信息</h1></div>
                             <div class="panel-body">
                                 <%
-                                    Statement stmt = conn.createStatement();
-                                    sql = "select * from course";
-                                    ResultSet rs = stmt.executeQuery(sql);
-                                    out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>课程学分</th><th>课程所属系</th><th>教师编号</th><th>授课星期</th><th>授课时间</th><th>总人数</th><th>授课地点</th><th>更改</th></tr></thead>");
-                                    out.println("<tbody>");
-                                    while (rs.next()) {
-                                        out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + rs.getString("Tno") + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs.getString("Addr") + "</td><td>" + "<a href='manager_update_course.jsp?Cno=" + rs.getString("Cno") + "&panduan=false'>修改</a>/<a href='manager_update_course.jsp?Cno=" + rs.getString("Cno") + "&panduan=true'>删除</a>" + "</td></tr>");
+                                    try {
+                                        Statement stmt = conn.createStatement();
+                                        ResultSet rs = stmt.executeQuery("select * from course");
+                                        out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>课程学分</th><th>课程所属系</th><th>教师编号</th><th>授课星期</th><th>授课时间</th><th>总人数</th><th>授课地点</th><th>更改</th></tr></thead>");
+                                        out.println("<tbody>");
+                                        while (rs.next()) {
+                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + rs.getString("Cname") + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + rs.getString("Tno") + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs.getString("Addr") + "</td><td>" + "<a href='manager_update_course.jsp?Cno=" + rs.getString("Cno") + "&panduan=false'>修改</a>/<a href='manager_update_course.jsp?Cno=" + rs.getString("Cno") + "&panduan=true'>删除</a>" + "</td></tr>");
+                                        }
+                                        out.println("</tbody></table>");
+                                        stmt.close();
+                                        conn.close();
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
                                     }
-                                    out.println("</tbody></table>");
-                                    stmt.close();
-                                    conn.close();
                                 %>
                             </div>
                         </div>

@@ -25,24 +25,27 @@
         //建立连接
         OpenConnection open = new OpenConnection();
         Connection conn = open.getConnection();
-        Statement stmt = conn.createStatement();
-        sql = "select Sno from student";
-        ResultSet rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            String temp = rs.getString("Sno");
-            if (temp.equals(Sno)) {
-                panduan = 0;
-                out.print("<script>alert('学号重复'); window.location='manager_add_student.jsp' </script>");//判断学号
-                break;
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select Sno from student");
+            while (rs.next()) {
+                String temp = rs.getString("Sno");
+                if (temp.equals(Sno)) {
+                    panduan = 0;
+                    out.print("<script>alert('学号重复'); window.location='manager_add_student.jsp' </script>");//判断学号
+                    break;
+                }
             }
+            if (panduan == 1) {//插入数据
+                sql = String.format("insert into student values('%s','%s','%s','%s','%s')", Sno, Sname, Ssex, Sdept, password_get);
+                stmt.executeUpdate(sql);
+                out.print("<script>alert('注册成功'); window.location='manager_view_student.jsp' </script>");//判断学号
+            }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (panduan == 1) {//插入数据
-            sql = String.format("insert into student values('%s','%s','%s','%s','%s')", Sno, Sname, Ssex, Sdept, password_get);
-            stmt.executeUpdate(sql);
-            out.print("<script>alert('注册成功'); window.location='manager_view_student.jsp' </script>");//判断学号
-        }
-        stmt.close();
-        conn.close();
     }
 %>
 <!DOCTYPE html>

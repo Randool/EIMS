@@ -7,87 +7,87 @@
     if (panduan == null) out.print("<script>alert('请指定课程！'); window.location='manager_view_course.jsp' </script>");
     OpenConnection open = new OpenConnection();
     Connection conn = open.getConnection();
-    Statement stmt = conn.createStatement();
-    if (panduan != null && panduan.equals("true")) {//直接删除
-        String Cno = request.getParameter("Cno");
-        sql = String.format("delete  from course where Cno='%s'", Cno);
-        try {
+    try {
+        Statement stmt = conn.createStatement();
+        if (panduan != null && panduan.equals("true")) {//直接删除
+            String Cno = request.getParameter("Cno");
+            sql = String.format("delete  from course where Cno='%s'", Cno);
             stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        out.print("<script>alert('删除成功'); window.location='manager_view_course.jsp' </script>");
-    } else if (panduan != null && panduan.equals("update")) {//二次更新
-        ResultSet rs;
-        int panduan2 = 1;
-        String Cno = request.getParameter("Cno");
-        String Cname = request.getParameter("Cname");
-        String Credit = request.getParameter("Credit");
-        String Sdept = request.getParameter("Sdept");
-        String Tno = request.getParameter("Tno");
-        String Cweek = request.getParameter("Cweek");
-        String Cday = request.getParameter("Cday");
-        String Cap = request.getParameter("Cap");
-        String Adr = request.getParameter("Adr");
-        if (Cname == null || Cname.length() == 0) {
-            out.print("<script>alert('课程名为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }
-        if (Credit == null || Credit.length() == 0) {
-            out.print("<script>alert('学分为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }
-        if (Tno.length() != 9) {
-            out.print("<script>alert('教工号长度不为9位！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }
-        if (Cweek == null || Cweek.length() == 0 || Cweek.length() > 10) {
-            out.print("<script>alert('上课星期长度不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }
-        if (Cday == null || Cday.length() == 0 || Cday.length() > 2) {
-            out.print("<script>alert('上课时间不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }
-        if (Cap == null || Cap.length() == 0) {
-            out.print("<script>alert('开课人数不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }
-        if (Adr == null || Adr.length() == 0) {
-            out.print("<script>alert('上课地址不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
-            panduan2 = 0;
-        }
-        int panduant = 0;
-        rs = stmt.executeQuery("select Tno from teacher");
-        while (rs.next()) {
-            String temp = rs.getString("Tno");
-            if (temp.equals(Tno)) {
-                panduant = 1;
-                break;
+            out.print("<script>alert('删除成功'); window.location='manager_view_course.jsp' </script>");
+        } else if (panduan != null && panduan.equals("update")) {//二次更新
+            ResultSet rs;
+            int panduan2 = 1;
+            String Cno = request.getParameter("Cno");
+            String Cname = request.getParameter("Cname");
+            String Credit = request.getParameter("Credit");
+            String Sdept = request.getParameter("Sdept");
+            String Tno = request.getParameter("Tno");
+            String Cweek = request.getParameter("Cweek");
+            String Cday = request.getParameter("Cday");
+            String Cap = request.getParameter("Cap");
+            String Adr = request.getParameter("Adr");
+            if (Cname == null || Cname.length() == 0) {
+                out.print("<script>alert('课程名为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+                panduan2 = 0;
             }
-        }
-        if (panduan2 == 1 && panduant == 0) {
-            out.print("<script>alert('教工号无效'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");//判断学号
-            panduan2 = 0;
-        }
-        if (panduan2 == 1) {
-            sql = String.format("update course set Cname='%s',Credit='%s',Sdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Adr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Adr, Cno);
-            System.out.println(sql);
-            stmt.executeUpdate(sql);
-            stmt.close();
-            conn.close();
-            out.print("<script>alert('更新成功！'); window.location='manager_view_course.jsp' </script>");
-        }
-    }%>
+            if (Credit == null || Credit.length() == 0) {
+                out.print("<script>alert('学分为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }
+            if (Tno.length() != 9) {
+                out.print("<script>alert('教工号长度不为9位！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }
+            if (Cweek == null || Cweek.length() == 0 || Cweek.length() > 10) {
+                out.print("<script>alert('上课星期长度不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }
+            if (Cday == null || Cday.length() == 0 || Cday.length() > 2) {
+                out.print("<script>alert('上课时间不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }
+            if (Cap == null || Cap.length() == 0) {
+                out.print("<script>alert('开课人数不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }
+            if (Adr == null || Adr.length() == 0) {
+                out.print("<script>alert('上课地址不合法！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+                panduan2 = 0;
+            }
+            int panduant = 0;
+            rs = stmt.executeQuery("select Tno from teacher");
+            while (rs.next()) {
+                String temp = rs.getString("Tno");
+                if (temp.equals(Tno)) {
+                    panduant = 1;
+                    break;
+                }
+            }
+            if (panduan2 == 1 && panduant == 0) {
+                out.print("<script>alert('教工号无效'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");//判断学号
+                panduan2 = 0;
+            }
+            if (panduan2 == 1) {
+                sql = String.format("update course set Cname='%s',Credit='%s',Sdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Adr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Adr, Cno);
+                System.out.println(sql);
+                stmt.executeUpdate(sql);
+                stmt.close();
+                conn.close();
+                out.print("<script>alert('更新成功！'); window.location='manager_view_course.jsp' </script>");
+            }
+        }%>
 <%!ResultSet rs; //作用域%>
 <%
-    if (panduan != null && panduan.equals("false")) {
-        String Cno = request.getParameter("Cno");
-        sql = String.format("select *  from course where Cno='%s'", Cno);
-        rs = stmt.executeQuery(sql);
-        rs.next();
+        if (panduan != null && panduan.equals("false")) {
+            String Cno = request.getParameter("Cno");
+            sql = String.format("select *  from course where Cno='%s'", Cno);
+            rs = stmt.executeQuery(sql);
+            rs.next();
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 %>
 <!DOCTYPE html>

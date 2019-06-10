@@ -45,39 +45,41 @@
         //建立连接
         OpenConnection open = new OpenConnection();
         Connection conn = open.getConnection();
-        Statement stmt = conn.createStatement();
-        sql = "select Cno from course";//检测课程编号
-        ResultSet rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            String temp = rs.getString("Cno");
-            if (temp.equals(Cno)) {
+        try {
+            Statement stmt = conn.createStatement();
+            //检测课程编号
+            ResultSet rs = stmt.executeQuery("select Cno from course");
+            while (rs.next()) {
+                String temp = rs.getString("Cno");
+                if (temp.equals(Cno)) {
+                    panduan = 0;
+                    out.print("<script>alert('课程号重复'); window.location='manager_add_course.jsp' </script>");//判断学号
+                    break;
+                }
+            }
+            int panduant = 0;
+            rs = stmt.executeQuery("select Tno from teacher");
+            while (rs.next()) {
+                String temp = rs.getString("Tno");
+                if (temp.equals(Tno)) {
+                    panduant = 1;
+                    break;
+                }
+            }
+            if (panduan == 1 && panduant == 0) {
+                out.print("<script>alert('教工号无效'); window.location='manager_add_course.jsp' </script>");//判断学号
                 panduan = 0;
-                out.print("<script>alert('课程号重复'); window.location='manager_add_course.jsp' </script>");//判断学号
-                break;
             }
-        }
-        int panduant = 0;
-        sql = "select Tno from teacher";
-        rs = stmt.executeQuery(sql);
-        while (rs.next()) {
-            String temp = rs.getString("Tno");
-            if (temp.equals(Tno)) {
-                panduant = 1;
-                break;
+            if (panduan == 1) {//插入数据
+                sql = String.format("insert into course values('%s','%s',%s,'%s','%s','%s',%s,%s,'%s')", Cno, Cname, Ccredit, Sdept, Tno, Cweek, Cday, Cap, Addr);
+                stmt.executeUpdate(sql);
+                out.print("<script>alert('注册成功'); window.location='manager_view_course.jsp' </script>");//判断学号
             }
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (panduan == 1 && panduant == 0) {
-            out.print("<script>alert('教工号无效'); window.location='manager_add_course.jsp' </script>");//判断学号
-            panduan = 0;
-        }
-        if (panduan == 1) {//插入数据
-            sql = String.format("insert into course values('%s','%s',%s,'%s','%s','%s',%s,%s,'%s')", Cno, Cname, Ccredit, Sdept, Tno, Cweek, Cday, Cap, Addr);
-            stmt.executeUpdate(sql);
-//		System.out.println(sql);
-            out.print("<script>alert('注册成功'); window.location='manager_view_course.jsp' </script>");//判断学号
-        }
-        stmt.close();
-        conn.close();
     }
 %>
 <!DOCTYPE html>

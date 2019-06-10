@@ -84,17 +84,20 @@
                             <div class="panel-heading" style="text-align:center"><h1>学籍信息</h1></div>
                             <div class="panel-body">
                                 <%
-                                    Statement stmt = conn.createStatement();
-                                    sql = "select * from student";
-                                    ResultSet rs = stmt.executeQuery(sql);
-                                    out.println("<table class='table table-striped'><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>所属系</th><th>密码</th><th>更改</th></tr></thead>");
-                                    out.println("<tbody>");
-                                    while (rs.next()) {
-                                        out.println("<tr><td>" + rs.getString("Sno") + "</td><td>" + rs.getString("Sname") + "</td><td>" + rs.getString("Ssex") + "</td><td>" + rs.getString("Sdept") + "</td><td>" + rs.getString("Password") + "</td><td>" + "<a href='manager_update_student.jsp?Sno=" + rs.getString("Sno") + "&panduan=false'>修改</a>/<a href='manager_update_student.jsp?Sno=" + rs.getString("Sno") + "&panduan=true'>删除</a>" + "</td></tr>");
+                                    try {
+                                        Statement stmt = conn.createStatement();
+                                        ResultSet rs = stmt.executeQuery("select * from student");
+                                        out.println("<table class='table table-striped'><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>所属系</th><th>密码</th><th>更改</th></tr></thead>");
+                                        out.println("<tbody>");
+                                        while (rs.next()) {
+                                            out.println("<tr><td>" + rs.getString("Sno") + "</td><td>" + rs.getString("Sname") + "</td><td>" + rs.getString("Ssex") + "</td><td>" + rs.getString("Sdept") + "</td><td>" + rs.getString("Password") + "</td><td>" + "<a href='manager_update_student.jsp?Sno=" + rs.getString("Sno") + "&panduan=false'>修改</a>/<a href='manager_update_student.jsp?Sno=" + rs.getString("Sno") + "&panduan=true'>删除</a>" + "</td></tr>");
+                                        }
+                                        out.println("</tbody></table>");
+                                        stmt.close();
+                                        conn.close();
+                                    } catch (SQLException e) {
+                                        e.printStackTrace();
                                     }
-                                    out.println("</tbody></table>");
-                                    stmt.close();
-                                    conn.close();
                                 %>
                             </div>
                         </div>
