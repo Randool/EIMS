@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class Test {
     public static void main(String[] args) {
-        OpenConnection open = new OpenConnection();
+        MySQLJava open = new MySQLJava();
         Connection conn = open.getConnection();
         System.out.println("连接数据库成功");
 

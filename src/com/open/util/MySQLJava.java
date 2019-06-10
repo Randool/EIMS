@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 
-public class OpenConnection {
+public class MySQLJava {
+
     public Connection getConnection() {
         String driver = null;
         String url = null;
@@ -15,7 +16,8 @@ public class OpenConnection {
         String password = null;
         Connection conn;
 
-        Properties pro = new Properties();    //新建一个properties实例，用于从DBConfig中拿到连接参数。
+        //新建一个properties实例，用于从DBConfig中拿到连接参数。
+        Properties pro = new Properties();
         try {
             pro.load(this.getClass().getClassLoader().getResourceAsStream("DBConfig.properties")); //加载DBConfig文件。
             driver = pro.getProperty("driver");
@@ -28,15 +30,10 @@ public class OpenConnection {
 
         try {
             Class.forName(driver);   //加载jdbc驱动
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
             conn = DriverManager.getConnection(url, user_name, password);  //获取数据库连接
             conn.setAutoCommit(true);
-            return conn;       //返回一个数据库连接。
-        } catch (SQLException e) {
+            return conn;    //返回一个数据库连接。
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
 
