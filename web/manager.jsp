@@ -82,7 +82,7 @@
         <div class="templatemo-content">
             <h1>
                 <%
-                    Statement stmt = null;
+                    Statement stmt;
                     sql = String.format("select * from manager where Mno='%s'", Mno);
 //                    System.out.println(sql);
                     try {

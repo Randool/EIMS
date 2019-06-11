@@ -39,7 +39,7 @@
 
         if (panduan2 == 1) {
             String sql = String.format("select * from %s where %s='%s'", user_type, user_no, username);
-            System.out.println(sql);
+            // System.out.println(sql);
             MySQLJava open = new MySQLJava();
             Connection conn = open.getConnection();
 //            System.out.println("连接数据库成功");

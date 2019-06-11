@@ -8,14 +8,14 @@
     MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
     Cookie cookies[] = request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组里面
-    Cookie sCookie = null;
+    Cookie sCookie;
     String svalue = null;
-    String sname = null;
+//    String sname = null;
 
     for (int i = 0; i < cookies.length - 1; i++) {    //用一个循环语句遍历刚才建立的Cookie对象数组
         sCookie = cookies[i]; //取出数组中的一个Cookie对象
         if (sCookie.getName().equals("user_no")) {
-            sname = sCookie.getName(); //取得这个Cookie的名字
+//            sname = sCookie.getName(); //取得这个Cookie的名字
             svalue = sCookie.getValue(); //取得这个Cookie的内容
         }
     }
@@ -87,10 +87,8 @@
         </ul>
     </div><!--/.navbar-collapse -->
 
-
     <div class="templatemo-content-wrapper">
         <div class="templatemo-content">
-
             <h1>
                 <%
                     Statement stmt;
@@ -100,18 +98,16 @@
                         sql = String.format("select * from teacher where Tno='%s'", user_no);
                         rs = stmt.executeQuery(sql);
                         rs.next(); //有毒！
-                        out.println(new String(request.getParameter("Tname").getBytes(ISO_8859_1), UTF_8));
+                        out.println(rs.getString("Tname"));
                 %>
             </h1>
             <p>本学期课表如下</p>
-
             <div class="templatemo-panels">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 margin-bottom-30">
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="text-align:center"><h1>课程表</h1></div>
                             <div class="panel-body">
-
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
@@ -151,7 +147,6 @@
                                             for (int k = 1; k < 8; k++) {
                                                 String kk = k + "";
                                     %>
-
                                     <%
                                                     int flag = 1;
                                                     for (int m = 0; m < j; m++) {

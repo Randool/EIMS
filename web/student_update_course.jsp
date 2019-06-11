@@ -56,7 +56,7 @@
                     }
                     if (!flag) { //没冲突，通过第三道检验
                         sql = String.format("insert into SC(Sno,Cno) values('%s','%s')", Sno, Cno);
-                        System.out.println(sql);
+                        // System.out.println(sql);
                         stmt.executeUpdate(sql);
                         stmt.close();
                         conn.close();
@@ -71,7 +71,7 @@
         } else if (panduan.equals("cancel")) {
             sql = String.format("delete from sc where Sno='%s' and Cno='%s'", Sno, Cno);
             int a = stmt.executeUpdate(sql);
-            System.out.println(a);
+            // System.out.println(a);
             stmt.close();
             conn.close();
             out.print(String.format("<script>alert('删除成功'); window.location='student_elective_result.jsp?Sno=%s' </script>", Sno));

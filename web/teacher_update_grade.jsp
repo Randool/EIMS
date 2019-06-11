@@ -28,10 +28,10 @@
     String Newgrade = request.getParameter("Newgrade");
     String Sdept = request.getParameter("Sedpt");
 
-    System.out.print(change);
-    System.out.print(Cno);
-    System.out.print(panduan);
-    System.out.print(user_no);
+    // System.out.print(change);
+    // System.out.print(Cno);
+    // System.out.print(panduan);
+    // System.out.print(user_no);
 
     MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
@@ -50,25 +50,25 @@
             }
 
             if (Cno.equals("")) {
-                System.out.print("Cno");
+                // System.out.print("Cno");
                 out.print("<script>alert('课程号为空！');window.location.href='teacher_update_grade.jsp'  </script>");
                 flag = 0;
             } else if (Cname.equals("")) {
-                System.out.print("Cname");
+                // System.out.print("Cname");
                 out.print("<script>alert('课程名为空！');window.location.href='teacher_update_grade.jsp' </script>");
                 flag = 0;
             } else if (Sno.length() != 12) {
-                System.out.print("Sno");
+                // System.out.print("Sno");
                 out.print("<script>alert('学生学号长度不为12');window.location.href='teacher_update_grade.jsp' </script>");
                 flag = 0;
             } else if (grade < 0 || grade > 100) {
-                System.out.print("grade" + user_no);
+                // System.out.print("grade" + user_no);
                 out.print("<script>alert('输入[0,100]的成绩值');window.location='teacher_update_grade.jsp'</script>");
                 flag = 0;
             }
-            System.out.print(flag);
+            // System.out.print(flag);
             if (flag == 1) {
-                System.out.print("flag");
+                // System.out.print("flag");
                 sql = String.format("select * from course where Cno='%s'and Cname='%s'", Cno, Cname);
                 rs = stmt.executeQuery(sql);
                 if (!rs.next()) {
@@ -93,7 +93,7 @@
             }
         } else if (change != null && change.length() != 0) {
             sql = String.format("select Cname, Sdept from course where Cno='%s'", Cno);
-            System.out.println(sql);
+            // System.out.println(sql);
             rs = stmt.executeQuery(sql);
             rs.next();
         }

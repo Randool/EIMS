@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -83,8 +85,8 @@
                                     out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>学分</th><th>课程系别</th><th>教师</th><th>授课星期</th><th>授课时间</th><th>课程容量</th><th>已选人数</th><th>授课地点</th><th>选择课程</th></tr></thead>");
                                     out.println("<tbody>");
                                     sql = String.format("select * from student where Sno='%s'", Sno);
-                                    ResultSet rs = null;
-                                    Statement stmt = null;
+                                    ResultSet rs;
+                                    Statement stmt;
                                     try {
                                         stmt = conn.createStatement();
                                         rs = stmt.executeQuery(sql);
@@ -105,7 +107,7 @@
                                             sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
                                             rs1 = stmt1.executeQuery(sql);
                                             rs1.next();
-                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + new String(request.getParameter("Cname").getBytes(ISO_8859_1), UTF_8) + "</td><td>" + rs.getString("Credit") + "</td><td>" + rs.getString("Cdept") + "</td><td>" + tname + "</td><td>" + rs.getString("Cweek") + "</td><td>" + rs.getString("Cday") + "</td><td>" + rs.getString("Cap") + "</td><td>" + rs1.getString("count(*)") + "</td><td>" + new String(rs.getString("Addr").getBytes(ISO_8859_1), UTF_8) + "</td><td><a href='student_update_course.jsp?Cno=" + rs.getString("Cno") + "&Sno=" + Sno + "&panduan=select'>选择</a>" + "</td></tr>");
+                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='student_update_course.jsp?Cno=%s&Sno=%s&panduan=select'>选择</a></td></tr>", rs.getString("Cno"), rs.getString("Cname"), rs.getString("Credit"), rs.getString("Cdept"), tname, rs.getString("Cweek"), rs.getString("Cday"), rs.getString("Cap"), rs1.getString("count(*)"), rs.getString("Addr"), rs.getString("Cno"), Sno));
                                         }
                                         stmt.close();
                                         stmt1.close();

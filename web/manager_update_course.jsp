@@ -80,7 +80,7 @@
                 Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
                 Addr = new String(Addr.getBytes(ISO_8859_1), UTF_8);
                 sql = String.format("update course set Cname='%s',Credit='%s',Cdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Addr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Addr, Cno);
-                System.out.println(sql);
+                // System.out.println(sql);
                 stmt.executeUpdate(sql);
                 stmt.close();
                 conn.close();

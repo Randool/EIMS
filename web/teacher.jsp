@@ -88,8 +88,7 @@
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(sql);
                         rs.next(); //有毒！
-                        String Tname = new String(rs.getString("Tname").getBytes(ISO_8859_1), UTF_8);
-                        out.println(Tname);
+                        out.println(rs.getString("Tname"));
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -125,7 +124,7 @@
     </div>
     <footer class="templatemo-footer">
         <div class="templatemo-copyright">
-            <p>Copyright &copy; 计科1503班yzsy组</p>
+            <p>Copyright &copy; 计科1605班</p>
         </div>
     </footer>
 </div>

@@ -221,7 +221,7 @@
     </div>
     <footer class="templatemo-footer">
         <div class="templatemo-copyright">
-            <p>Copyright &copy; 计科1503班yzsy组</p>
+            <p>Copyright &copy; 计科1605班</p>
         </div>
     </footer>
 </div>

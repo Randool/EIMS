@@ -100,7 +100,7 @@
                                     try {
                                         Statement stmt = conn.createStatement();
                                         sql = String.format("SELECT Cno,Cname,teacher.Tdept,Credit FROM course,teacher where teacher.Tno=course.Tno and teacher.Tno='%s'", user_no);
-                                        System.out.print(sql);
+                                        // System.out.print(sql);
                                         ResultSet rs = stmt.executeQuery(sql);
                                         out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>系名</th><th>学分</th></tr></thead>");
                                         out.println("<tbody>");
@@ -143,7 +143,7 @@
     </div>
     <footer class="templatemo-footer">
         <div class="templatemo-copyright">
-            <p>Copyright &copy; 计科1503班yzsy组</p>
+            <p>Copyright &copy; 计科1605班</p>
         </div>
     </footer>
 </div>
