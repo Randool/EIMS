@@ -5,7 +5,7 @@
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
-    String Cname = request.getParameter("Cnamept");
+    String Cname = request.getParameter("Cname");
     String Credit = request.getParameter("Credit");
     String Sdept = request.getParameter("Sdept");
     String Cno = request.getParameter("Cno");
@@ -16,20 +16,24 @@
     String Addr = request.getParameter("Addr");
     if (Sdept != null) {//检查更新
         int panduan = 1;
-        if (Cname == null) {
+        if (Cname == null || Cname.length() == 0) {
             out.print("<script>alert('课程名为空！'); window.location='manager_add_course.jsp' </script>");
             panduan = 0;
         }
-        if (Cno.length() > 4) {
-            out.print("<script>alert('课程号长度大于4位！'); window.location='manager_add_course.jsp' </script>");
+        if (Cname.length() > 20) {
+            out.print("<script>alert('课程名需小于20位！'); window.location='manager_add_course.jsp' </script>");
+            panduan = 0;
+        }
+        if (Cno.length() > 16) {
+            out.print("<script>alert('课程号长度需小于16位！'); window.location='manager_add_course.jsp' </script>");
             panduan = 0;
         }
         if (Credit == null) {
             out.print("<script>alert('学分为空！'); window.location='manager_add_course.jsp' </script>");
             panduan = 0;
         }
-        if (Tno.length() > 15) {
-            out.print("<script>alert('教工号长度需小于15位！'); window.location='manager_add_course.jsp' </script>");
+        if (Tno.length() > 16) {
+            out.print("<script>alert('教工号长度需小于16位！'); window.location='manager_add_course.jsp' </script>");
             panduan = 0;
         }
         if (Cweek == null || Cweek.length() > 10) {
@@ -73,6 +77,9 @@
                 panduan = 0;
             }
             if (panduan == 1) {//插入数据
+                Cname = new String(Cname.getBytes(ISO_8859_1), UTF_8);
+                Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
+                Addr = new String(Addr.getBytes(ISO_8859_1), UTF_8);
                 sql = String.format("insert into course values('%s','%s',%s,'%s','%s','%s',%s,%s,'%s')", Cno, Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Addr);
                 stmt.executeUpdate(sql);
                 out.print("<script>alert('注册成功'); window.location='manager_view_course.jsp' </script>");//判断学号
@@ -133,8 +140,8 @@
                 </a>
                 <ul class="templatemo-submenu">
                     <li><a href="manager_view_teacher.jsp">查看教师信息</a></li>
-                    <li><a href="manager_add_teacher.jsp">注册/修改教师信息</a></li>
-                    <li><a href="manager_update_teacher.jsp">删除教师信息</a></li>
+                    <li><a href="manager_add_teacher.jsp">注册教师信息</a></li>
+                    <%--<li><a href="manager_update_teacher.jsp">删除教师信息</a></li>--%>
                 </ul>
             </li>
             <li class="sub open" id="now">

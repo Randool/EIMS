@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
     String Tname = request.getParameter("Tname");
@@ -37,7 +39,11 @@
                 }
             }
             if (panduan == 1) {//插入数据
-                sql = String.format("insert into teacher values('%s','%s','%s','%s','%s')", Tno, Tname, Sdept, Tsex, password_get);
+                Tname = new String(Tname.getBytes(ISO_8859_1), UTF_8);
+                Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
+                Tsex = new String(Tsex.getBytes(ISO_8859_1), UTF_8);
+//                System.out.println(Tsex.length());
+                sql = String.format("insert into teacher values('%s','%s','%s','%s','%s')", Tno, Tname, Tsex, Sdept, password_get);
                 stmt.executeUpdate(sql);
                 out.print("<script>alert('注册成功'); window.location='manager_view_teacher.jsp' </script>");
             }
@@ -125,8 +131,6 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="text-align:center"><h1>注册教工信息</h1></div>
                             <div class="panel-body">
-
-
                                 <p class="margin-bottom-15" style="color: red">请正确填写以下信息！</p>
                                 <div class="row">
                                     <div class="col-md-12">

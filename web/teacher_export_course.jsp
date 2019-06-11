@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -91,8 +93,8 @@
 
             <h1>
                 <%
-                    Statement stmt = null;
-                    ResultSet rs = null;
+                    Statement stmt;
+                    ResultSet rs;
                     try {
                         stmt = conn.createStatement();
                         sql = String.format("select * from teacher where Tno='%s'", user_no);
@@ -135,7 +137,7 @@
                                             String cname = new String(rs.getString("Cname").getBytes(ISO_8859_1), UTF_8);
                                             String cweek = rs.getString("Cweek");
                                             String cday = rs.getString("Cday");
-                                            String Addr = new String(rs.getString("Addr").getBytes(ISO_8859_1), UTF_8);
+//                                            String Addr = new String(rs.getString("Addr").getBytes(ISO_8859_1), UTF_8);
                                             name[j] = cname;
                                             week[j] = cweek;
                                             day[j] = cday;

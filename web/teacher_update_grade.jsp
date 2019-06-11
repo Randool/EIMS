@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%!ResultSet rs; //全局作用域%>
 <%
     String sql;
@@ -21,7 +23,7 @@
     String user_no = svalue;
     String change = request.getParameter("change");
     String Cno = request.getParameter("Cno");
-    String Cname = new String(request.getParameter("Cnamept").getBytes(ISO_8859_1), UTF_8);
+    String Cname = request.getParameter("Cname");
     String Sno = request.getParameter("Sno");
     String Newgrade = request.getParameter("Newgrade");
     String Sdept = request.getParameter("Sedpt");
@@ -33,9 +35,9 @@
 
     MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
-
+    Statement stmt = null;
     try {
-        Statement stmt = conn.createStatement();
+        stmt = conn.createStatement();
         if (change == null && panduan != null) {//判断是否更新
             int grade = 0;
             int flag = 1;//判断标志
@@ -90,7 +92,7 @@
                 conn.close();
             }
         } else if (change != null && change.length() != 0) {
-            sql = String.format("select Cname,Sdept from course where Cno='%s'", Cno);
+            sql = String.format("select Cname, Sdept from course where Cno='%s'", Cno);
             System.out.println(sql);
             rs = stmt.executeQuery(sql);
             rs.next();
@@ -194,7 +196,10 @@
                                             <div class="col-md-6 margin-bottom-15">
                                                 <label for="Cname" class="control-label">课程名</label>
                                                 <input type="text" class="form-control" name="Cname"
-                                                       value="<%if(change!=null&&change.length()!=0)out.print(rs.getString("Cname"));%>" <%
+                                                       value="<%if(change!=null&&change.length()!=0){try {
+out.print(rs.getString("Cname"));} catch (SQLException e) {
+    e.printStackTrace();
+}}%>" <%
                                                     if (change != null && change.length() != 0)
                                                         out.print("readonly");
                                                 %>/>
@@ -214,23 +219,39 @@
                                             <div class="col-md-12 margin-bottom-15">
                                                 <label for="singleSelect">所属系</label>
                                                 <select class="form-control margin-bottom-15" name="Sdept">
-                                                    <option value="计算机工程系" <% if (change != null && change.length() != 0 && rs.getString("Sdept").equals("计算机工程系")) {
-                                                        out.print("selected = 'selected'");
+                                                    <option value="计算机工程系" <% try {
+                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("计算机工程系")) {
+                                                            out.print("selected = 'selected'");
+                                                        }
+                                                    } catch (SQLException e) {
+                                                        e.printStackTrace();
                                                     }%>>计算机工程系
                                                     </option>
-                                                    <option value="通信工程系" <% if (change != null && change.length() != 0 && rs.getString("Sdept").equals("通信工程系")) {
-                                                        out.print("selected = 'selected'");
+                                                    <option value="通信工程系" <% try {
+                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("通信工程系")) {
+                                                            out.print("selected = 'selected'");
+                                                        }
+                                                    } catch (SQLException e) {
+                                                        e.printStackTrace();
                                                     }%>>通信工程系
                                                     </option>
-                                                    <option value="软件工程系" <% if (change != null && change.length() != 0 && rs.getString("Sdept").equals("软件工程系")) {
-                                                        out.print("selected = 'selected'");
+                                                    <option value="软件工程系" <% try {
+                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("软件工程系")) {
+                                                            out.print("selected = 'selected'");
+                                                        }
+                                                    } catch (SQLException e) {
+                                                        e.printStackTrace();
                                                     }%>>软件工程系
                                                     </option>
-                                                    <option value="信息工程系" <% if (change != null && change.length() != 0 && rs.getString("Sdept").equals("信息工程系")) {
-                                                        out.print("selected = 'selected'");
-                                                        rs.close();
-                                                        stmt.close();
-                                                        conn.close();
+                                                    <option value="信息工程系" <% try {
+                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("信息工程系")) {
+                                                            out.print("selected = 'selected'");
+                                                            rs.close();
+                                                            stmt.close();
+                                                            conn.close();
+                                                        }
+                                                    } catch (SQLException e) {
+                                                        e.printStackTrace();
                                                     }%>>信息工程系
                                                     </option>
                                                 </select>
@@ -270,7 +291,7 @@
     </div>
     <footer class="templatemo-footer">
         <div class="templatemo-copyright">
-            <p>Copyright &copy; 计科1503班yzsy组</p>
+            <p>Copyright &copy; </p>
         </div>
     </footer>
 </div>

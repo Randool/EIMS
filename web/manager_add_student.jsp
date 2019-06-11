@@ -39,6 +39,9 @@
                 }
             }
             if (panduan == 1) {//插入数据
+                Sname = new String(Sname.getBytes(ISO_8859_1), UTF_8);
+                Ssex = new String(Ssex.getBytes(ISO_8859_1), UTF_8);
+                Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
                 sql = String.format("insert into student values('%s','%s','%s','%s','%s')", Sno, Sname, Ssex, Sdept, password_get);
                 stmt.executeUpdate(sql);
                 out.print("<script>alert('注册成功'); window.location='manager_view_student.jsp' </script>");//判断学号

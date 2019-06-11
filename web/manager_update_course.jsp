@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
     String panduan = request.getParameter("panduan");
@@ -32,12 +34,16 @@
                 out.print("<script>alert('课程名为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
             }
+            if (Cname.length() > 20) {
+                out.print("<script>alert('课程名需小于20位！'); window.location='manager_add_course.jsp' </script>");
+                panduan2 = 0;
+            }
             if (Credit == null || Credit.length() == 0) {
                 out.print("<script>alert('学分为空！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
             }
-            if (Tno.length() > 15) {
-                out.print("<script>alert('教工号长度需小于15位！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
+            if (Tno.length() > 16) {
+                out.print("<script>alert('教工号长度需小于16位！'); window.location='manager_update_course.jsp?Cno=" + Cno + "&panduan=false' </script>");
                 panduan2 = 0;
             }
             if (Cweek == null || Cweek.length() == 0 || Cweek.length() > 10) {
@@ -70,7 +76,10 @@
                 panduan2 = 0;
             }
             if (panduan2 == 1) {
-                sql = String.format("update course set Cname='%s',Credit='%s',Sdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Addr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Addr, Cno);
+                Cname = new String(Cname.getBytes(ISO_8859_1), UTF_8);
+                Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
+                Addr = new String(Addr.getBytes(ISO_8859_1), UTF_8);
+                sql = String.format("update course set Cname='%s',Credit='%s',Cdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Addr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Addr, Cno);
                 System.out.println(sql);
                 stmt.executeUpdate(sql);
                 stmt.close();

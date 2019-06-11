@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
+<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -86,11 +88,11 @@
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(sql);
                         rs.next(); //有毒！
-                        String tname = new String(request.getParameter("Tname").getBytes(ISO_8859_1), UTF_8);
+                        String Tname = new String(rs.getString("Tname").getBytes(ISO_8859_1), UTF_8);
+                        out.println(Tname);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-                    out.println(tname);
                 %>
             </h1>
             <p>欢迎来到湖南大学信息科学与工程学院教务管理系统</p>

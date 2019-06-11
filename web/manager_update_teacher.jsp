@@ -22,19 +22,20 @@
             ResultSet rs;
             int panduan2 = 1;
             String Tno = request.getParameter("Tno");
-            String Tname = new String(request.getParameter("Tname").getBytes(ISO_8859_1), UTF_8);
+            String Tname = request.getParameter("Tname");
             if (Tname.length() == 0) {
                 out.print("<script>alert('姓名为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
                 panduan2 = 0;
             }//判断姓名
-            String Tsex = new String(request.getParameter("Tsex").getBytes(ISO_8859_1), UTF_8);
-            String Sdept = new String(request.getParameter("Sdept").getBytes(ISO_8859_1), UTF_8);
             String password_get = request.getParameter("password");
             if (password_get == null || password_get.length() == 0) {
                 out.print("<script>alert('密码为空！'); window.location='manager_update_teacher.jsp?Tno=" + Tno + "&panduan=false' </script>");
                 panduan2 = 0;
             }//判断学号
             if (panduan2 == 1) {
+                Tname = new String(Tname.getBytes(ISO_8859_1), UTF_8);
+                String Tsex = new String(request.getParameter("Tsex").getBytes(ISO_8859_1), UTF_8);
+                String Sdept = new String(request.getParameter("Sdept").getBytes(ISO_8859_1), UTF_8);
                 sql = String.format("update teacher set Tname='%s',Tsex='%s',Tdept='%s',Password='%s' where Tno='%s'", Tname, Tsex, Sdept, password_get, Tno);
                 stmt.executeUpdate(sql);
                 stmt.close();

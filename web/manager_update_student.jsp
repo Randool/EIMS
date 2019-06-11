@@ -12,7 +12,7 @@
     try {
         Statement stmt = conn.createStatement();
         String Sno = request.getParameter("Sno");
-        String Sname = new String(request.getParameter("Sname").getBytes(ISO_8859_1), UTF_8);
+        String Sname = request.getParameter("Sname");
         if (panduan != null && panduan.equals("true")) {//直接删除
             sql = String.format("delete from student where Sno='%s'", Sno);
             stmt.executeUpdate(sql);
@@ -26,14 +26,15 @@
                 out.print("<script>alert('姓名为空！'); window.location='manager_update_student.jsp?Sno=" + Sno + "&panduan=false' </script>");
                 panduan2 = 0;
             }//判断姓名
-            String Ssex = new String(rs.getString("Ssex").getBytes(ISO_8859_1), UTF_8);
-            String Sdept = new String(rs.getString("Sdept").getBytes(ISO_8859_1), UTF_8);
             String password_get = request.getParameter("password");
             if (password_get == null || password_get.length() == 0) {
                 out.print(String.format("<script>alert('密码为空！'); window.location='manager_update_student.jsp?Sno=%s&panduan=false' </script>", Sno));
                 panduan2 = 0;
             }//判断学号
             if (panduan2 == 1) {
+                Sname = new String(Sname.getBytes(ISO_8859_1), UTF_8);
+                String Ssex = new String(request.getParameter("Ssex").getBytes(ISO_8859_1), UTF_8);
+                String Sdept = new String(request.getParameter("Sdept").getBytes(ISO_8859_1), UTF_8);
                 sql = String.format("update student set Sname='%s',Ssex='%s',Sdept='%s',Password='%s' where Sno='%s'", Sname, Ssex, Sdept, password_get, Sno);
                 stmt.executeUpdate(sql);
                 stmt.close();
