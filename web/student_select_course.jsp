@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
-<%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
-<%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.RedisJava" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
     Connection conn = open.getConnection();
+    RedisJava redis = new RedisJava();
     String Sno = request.getParameter("Sno");
 %>
 <!DOCTYPE html>
@@ -65,7 +65,8 @@
                     <div class="pull-right"></div>
                 </a>
             </li>
-            <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a></li>
+            <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign
+                Out</a></li>
         </ul>
     </div><!--/.navbar-collapse -->
 
@@ -84,33 +85,70 @@
                                 <%
                                     out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>学分</th><th>课程系别</th><th>教师</th><th>授课星期</th><th>授课时间</th><th>课程容量</th><th>已选人数</th><th>授课地点</th><th>选择课程</th></tr></thead>");
                                     out.println("<tbody>");
-                                    sql = String.format("select * from student where Sno='%s'", Sno);
+                                    sql = String.format("select * from student where Sno='%s' LIMIT 1", Sno);   // 限制1条
                                     ResultSet rs;
                                     Statement stmt;
                                     try {
                                         stmt = conn.createStatement();
                                         rs = stmt.executeQuery(sql);
                                         rs.next();
-                                        String sdept = rs.getString("Sdept"); //获取系
-                                        sql = String.format("select * from course where Cdept='%s'", sdept);
-                                        rs = stmt.executeQuery(sql);
-                                        Statement stmt1 = conn.createStatement();
-                                        ResultSet rs1;
-                                        while (rs.next()) {
-                                            String tempTno = rs.getString("Tno");
-                                            sql = String.format("select * from teacher where Tno='%s'", tempTno);
-                                            rs1 = stmt1.executeQuery(sql);
-                                            rs1.next();
-                                            String tname = rs1.getString("Tname");
+                                        String Sdept = rs.getString("Sdept"); //获取系
 
-                                            String tempCno = rs.getString("Cno");
-                                            sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
-                                            rs1 = stmt1.executeQuery(sql);
-                                            rs1.next();
-                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='student_update_course.jsp?Cno=%s&Sno=%s&panduan=select'>选择</a></td></tr>", rs.getString("Cno"), rs.getString("Cname"), rs.getString("Credit"), rs.getString("Cdept"), tname, rs.getString("Cweek"), rs.getString("Cday"), rs.getString("Cap"), rs1.getString("count(*)"), rs.getString("Addr"), rs.getString("Cno"), Sno));
+                                        Set<String> courses = redis.CourseBuf(Sdept, 20);   // 使用Redis
+                                        for (String item: courses) {
+                                            List<String> seq = Arrays.asList(item.split("\\|"));
+                                            String Cno = seq.get(0);
+                                            String Cname = seq.get(1);
+                                            String Credit = seq.get(2);
+                                            String Cdept = seq.get(3);
+                                            String Tname = seq.get(4);
+                                            String Cweek = seq.get(5);
+                                            String Cday = seq.get(6);
+                                            String Cap = seq.get(6);
+                                            String Addr = seq.get(6);
+
+                                            rs = stmt.executeQuery(String.format("select count(*) from sc where Cno='%s'", Cno));
+                                            rs.next();
+                                            String count = rs.getString("count(*)");
+
+                                            out.println("<tr>");
+                                            out.println(String.format("<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>",
+                                                    Cno, Cname, Credit, Cdept, Tname, Cweek, Cday, Cap, count, Addr));
+                                            out.println(String.format("<td><a href='student_update_course.jsp?Cno=%s&Sno=%s&panduan=select'>选择</a></td>", Cno, Sno));
+                                            out.println("</tr>");
                                         }
+//                                        sql = String.format("select * from course where Cdept='%s'", Sdept);
+//                                        rs = stmt.executeQuery(sql);
+//                                        Statement stmt1 = conn.createStatement();
+//                                        ResultSet rs1;
+//                                        while (rs.next()) {
+//                                            String Cno = rs.getString("Cno");
+//                                            String Cname = rs.getString("Cname");
+//                                            String Credit = rs.getString("Credit");
+//                                            String Cdept = rs.getString("Cdept");
+//                                            String Tno = rs.getString("Tno");
+//                                            String Cweek = rs.getString("Cweek");
+//                                            String Cday = rs.getString("Cday");
+//                                            String Cap = rs.getString("Cap");
+//                                            String Addr = rs.getString("Addr");
+//
+//                                            rs1 = stmt1.executeQuery(String.format("select * from teacher where Tno='%s'", Tno));
+//                                            rs1.next();
+//                                            String Tname = rs1.getString("Tname");
+//
+//                                            //选择了这个课程的人数
+//                                            rs1 = stmt1.executeQuery(String.format("select count(*) from sc where Cno='%s'", Cno));
+//                                            rs1.next();
+//                                            String count = rs1.getString("count(*)");
+//
+//                                            out.println("<tr>");
+//                                            out.println(String.format("<td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td>",
+//                                                    Cno, Cname, Credit, Cdept, Tname, Cweek, Cday, Cap, count, Addr));
+//                                            out.println(String.format("<td><a href='student_update_course.jsp?Cno=%s&Sno=%s&panduan=select'>选择</a></td>", Cno, Sno));
+//                                            out.println("</tr>");
+//                                        }
+//                                        stmt1.close();
                                         stmt.close();
-                                        stmt1.close();
                                         conn.close();
                                     } catch (SQLException e) {
                                         e.printStackTrace();
