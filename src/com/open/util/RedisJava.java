@@ -19,7 +19,7 @@ public class RedisJava {
         String Tname = jedis.get(Tno);
         if (Tname == null) {
             try {
-//                System.out.println("[info] Get Tname from MySQL");
+                System.out.println("[info] Get Tname from MySQL");
                 // 如果Redis中没有数据，尝试从MySQL中获取
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(String.format("SELECT Tname from Teacher WHERE Tno='%s'", Tno));
@@ -30,7 +30,7 @@ public class RedisJava {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
+        } else System.out.println("[info] Get Tname from Redis");
         return Tname;
     }
 
@@ -39,7 +39,7 @@ public class RedisJava {
         if (ans.isEmpty()) {    // Get from MySQL
             try {
                 ans = new TreeSet<>();
-//                System.out.println("[info] Get course from MySQL");
+                System.out.println("[info] Get course from MySQL");
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(String.format("SELECT * FROM COURSE WHERE Cdept='%S'", Sdept));
                 while (rs.next()) {
@@ -62,7 +62,7 @@ public class RedisJava {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
+        } else System.out.println("[info] Get courses from Redis");
         return ans;
     }
 
