@@ -1,7 +1,6 @@
 package com.open.util;
 
 import redis.clients.jedis.Jedis;
-
 import java.sql.*;
 import java.util.*;
 
@@ -16,7 +15,7 @@ public class RedisJava {
         jedis = new Jedis("localhost");
     }
 
-    public String Tno2Tname(String Tno, int expire) {
+    private String Tno2Tname(String Tno, int expire) {
         String Tname = jedis.get(Tno);
         if (Tname == null) {
             try {
@@ -67,18 +66,18 @@ public class RedisJava {
         return ans;
     }
 
-//    public static void main(String[] argv) {
-//        RedisJava rj = new RedisJava();
-//        rj.jedis.flushAll();
-////        Scanner sc = new Scanner(System.in);
-////        String key = sc.nextLine();
-//        // 计算机工程系
-//        int expire = 5;
-//        Set<String> ans = rj.CourseBuf("计算机工程系", expire);
-//        for (String item: ans) {
-//            List<String> seq = Arrays.asList(item.split("\\|"));
-//            System.out.println(seq);
-//        }
-//    }
+    public static void main(String[] argv) {
+        RedisJava rj = new RedisJava();
+        rj.jedis.flushAll();
+//        Scanner sc = new Scanner(System.in);
+//        String key = sc.nextLine();
+        // 计算机工程系
+        int expire = 5;
+        Set<String> ans = rj.CourseBuf("计算机工程系", expire);
+        for (String item: ans) {
+            List<String> seq = Arrays.asList(item.split("\\|"));
+            System.out.println(seq);
+        }
+    }
 
 }

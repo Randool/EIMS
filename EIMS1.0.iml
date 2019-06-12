@@ -41,5 +41,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jedis-2.9.0" level="project" />
   </component>
 </module>

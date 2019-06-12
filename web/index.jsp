@@ -39,24 +39,26 @@
 
         if (panduan2 == 1) {
             String sql = String.format("select * from %s where %s='%s'", user_type, user_no, username);
-            // System.out.println(sql);
             MySQLJava open = new MySQLJava();
             Connection conn = open.getConnection();
-//            System.out.println("连接数据库成功");
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            if (rs.next()) {
-                String temp = rs.getString("password");
-                if (temp.equals(password_get)) { //获取学号
-                    out.print("<script>alert('登录成功');   window.location='" + user_type + ".jsp?user_no=" + username + "' </script>");
-                } else {
-                    out.print("<script>alert('密码错误'); </script>");
+            try {
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql);
+                if (rs.next()) {
+                    String temp = rs.getString("password");
+                    if (temp.equals(password_get)) { //获取学号
+                        out.print("<script>alert('登录成功');   window.location='" + user_type + ".jsp?user_no=" + username + "' </script>");
+                    } else {
+                        out.print("<script>alert('密码错误'); </script>");
+                    }
+                    stmt.close();
+                    conn.close();
                 }
-                stmt.close();
-                conn.close();
-            } else {
-                out.print("<script>alert('用户名不存在'); </script>");
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
+        } else {
+            out.print("<script>alert('用户名不存在'); </script>");
         }
     }
 
