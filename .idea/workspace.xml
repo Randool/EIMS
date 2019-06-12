@@ -8,20 +8,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6f5384e2-ac88-4c92-b7a3-6491a8dc4348" name="Default Changelist" comment="消除了部分bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EIMS1.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EIMS1.0.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DBConfig.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBConfig.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/open/util/MySQLJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/open/util/MySQLJava.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/open/util/RedisJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/open/util/RedisJava.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/open/util/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/open/util/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/manager_update_teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/manager_update_teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/student_elective_result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/student_elective_result.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/classes/com/open/util/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/com/open/util/Test.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/student_select_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/student_select_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/student_update_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/student_update_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/teacher.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/teacher_export_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_export_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/teacher_update_grade.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_update_grade.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/teacher_view_course.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_view_course.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/teacher_view_grade.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/teacher_view_grade.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -162,58 +155,61 @@
     <session id="-779472462">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.23" value="1" />
-          <entry key="project.open.time.28" value="1" />
+          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.28" value="2" />
           <entry key="project.open.time.29" value="2" />
           <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="LICENSE" value="1" />
           <entry key="class" value="1" />
-          <entry key="java" value="5" />
-          <entry key="jsp" value="78" />
+          <entry key="java" value="8" />
+          <entry key="jsp" value="92" />
           <entry key="md" value="1" />
           <entry key="properties" value="6" />
-          <entry key="sql" value="2" />
+          <entry key="sql" value="4" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="5" />
-          <entry key="JSP" value="78" />
+          <entry key="JAVA" value="8" />
+          <entry key="JSP" value="92" />
           <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="1" />
           <entry key="Properties" value="6" />
-          <entry key="SQL" value="2" />
+          <entry key="SQL" value="4" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="24" />
-          <entry key="java" value="432" />
-          <entry key="jsp" value="2023" />
+          <entry key="java" value="2550" />
+          <entry key="jsp" value="2487" />
           <entry key="md" value="52" />
           <entry key="properties" value="1" />
           <entry key="sql" value="8" />
-          <entry key="txt" value="281" />
+          <entry key="txt" value="290" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="432" />
-          <entry key="JSP" value="2020" />
+          <entry key="JAVA" value="2550" />
+          <entry key="JSP" value="2484" />
           <entry key="Markdown" value="52" />
-          <entry key="PLAIN_TEXT" value="305" />
+          <entry key="PLAIN_TEXT" value="314" />
           <entry key="Properties" value="1" />
           <entry key="SQL" value="10" />
         </counts>
@@ -222,11 +218,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/teacher_export_course.jsp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/open/util/RedisJava.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="199" column="31" lean-forward="true" selection-start-line="199" selection-start-column="15" selection-end-line="199" selection-end-column="31" />
+            <state relative-caret-position="387">
+              <caret line="56" column="46" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/student_select_course.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1771">
+              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -242,7 +250,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Ccredit</find>
       <find>Tno.length</find>
       <find>rs.getString(&quot;Tname&quot;)</find>
       <find>rs.getParameter(&quot;Tsex&quot;)</find>
@@ -272,6 +279,7 @@
       <find>班yzsy组</find>
       <find>System.out</find>
       <find>Copyright &amp;copy;</find>
+      <find>td</find>
     </findStrings>
     <replaceStrings>
       <replace>GPA</replace>
@@ -313,7 +321,6 @@
         <option value="$PROJECT_DIR$/src/com/open/util/RedisConn.java" />
         <option value="$PROJECT_DIR$/src/com/open/util/OpenConnection.java" />
         <option value="$PROJECT_DIR$/web/student.jsp" />
-        <option value="$PROJECT_DIR$/src/com/open/util/RedisJava.java" />
         <option value="$PROJECT_DIR$/web/manager_view_student.jsp" />
         <option value="$PROJECT_DIR$/web/manager_update_teacher.jsp" />
         <option value="$PROJECT_DIR$/web/manager_update_student.jsp" />
@@ -325,10 +332,12 @@
         <option value="$PROJECT_DIR$/web/manager_add_teacher.jsp" />
         <option value="$PROJECT_DIR$/web/teacher_view_course.jsp" />
         <option value="$PROJECT_DIR$/web/teacher_update_grade.jsp" />
-        <option value="$PROJECT_DIR$/web/student_select_course.jsp" />
         <option value="$PROJECT_DIR$/web/student_elective_result.jsp" />
         <option value="$PROJECT_DIR$/web/teacher.jsp" />
         <option value="$PROJECT_DIR$/web/teacher_export_course.jsp" />
+        <option value="$PROJECT_DIR$/src/com/open/util/MySQLJava.java" />
+        <option value="$PROJECT_DIR$/src/com/open/util/RedisJava.java" />
+        <option value="$PROJECT_DIR$/web/student_select_course.jsp" />
       </list>
     </option>
   </component>
@@ -352,16 +361,43 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="125" />
-    <option name="y" value="10" />
-    <option name="width" value="1660" />
-    <option name="height" value="1025" />
+    <option name="x" value="768" />
+    <option name="y" value="1" />
+    <option name="width" value="978" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+            <path>
+              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="0" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="EIMS1.1" type="58d84e3e:PackageViewProjectNode" />
+              <item name="EIMS1.0" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -400,39 +436,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="EIMS1.1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="EIMS1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="0" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="EIMS1.1" type="58d84e3e:PackageViewProjectNode" />
-              <item name="EIMS1.0" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560267194421" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560330584766" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -595,7 +604,9 @@
       <workItem from="1560172833560" duration="6773000" />
       <workItem from="1560212266910" duration="86000" />
       <workItem from="1560212391963" duration="3726000" />
-      <workItem from="1560266242136" duration="1049000" />
+      <workItem from="1560266242136" duration="4000000" />
+      <workItem from="1560307620384" duration="3871000" />
+      <workItem from="1560321510736" duration="7900000" />
     </task>
     <task id="LOCAL-00001" summary="增加了项目需要的环境">
       <created>1560078592823</created>
@@ -702,11 +713,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560181953611</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="消除了乱码的bug">
+      <created>1560267322660</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1560267322660</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49051000" />
+    <option name="totallyTimeSpent" value="63773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -721,7 +739,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.22989276" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49889624" weight="0.23190348" />
       <window_info id="Structure" order="1" sideWeight="0.50110376" side_tool="true" weight="0.22397476" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -731,7 +749,7 @@
       <window_info id="Web" order="7" sideWeight="0.5011601" side_tool="true" weight="0.19034852" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.37988827" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.37430167" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" weight="0.41340783" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -825,7 +843,8 @@
     <MESSAGE value="编码错误的问题部分解决" />
     <MESSAGE value="SQL建表代码" />
     <MESSAGE value="Redis准备" />
-    <option name="LAST_COMMIT_MESSAGE" value="Redis准备" />
+    <MESSAGE value="消除了乱码的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="消除了乱码的bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -970,13 +989,6 @@
     <entry file="file://$PROJECT_DIR$/.idea/encodings.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/setup.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="93" column="36" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/manager.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="598">
@@ -991,27 +1003,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/open/util/MySQLJava.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/student.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-950">
           <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/open/util/RedisJava.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -1078,20 +1073,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager_update_course.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-937">
-          <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/student_select_course.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="110" column="41" lean-forward="true" selection-start-line="110" selection-start-column="41" selection-end-line="110" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/student_elective_result.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1129,8 +1110,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/teacher_export_course.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="199" column="31" lean-forward="true" selection-start-line="199" selection-start-column="15" selection-end-line="199" selection-end-column="31" />
+        <state relative-caret-position="1702">
+          <caret line="203" lean-forward="true" selection-start-line="203" selection-end-line="203" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/open/util/MySQLJava.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager_update_course.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1403">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/setup.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="51" column="6" lean-forward="true" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/open/util/RedisJava.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="56" column="46" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/student_select_course.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1771">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
         </state>
       </provider>
     </entry>

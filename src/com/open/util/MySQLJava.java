@@ -28,6 +28,9 @@ public class MySQLJava {
             e.printStackTrace();
         }
 
+        if (url == null || user_name == null || password == null)
+            return null;
+
         try {
             Class.forName(driver);   //加载jdbc驱动
             conn = DriverManager.getConnection(url, user_name, password);  //获取数据库连接
