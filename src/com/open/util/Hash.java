@@ -8,19 +8,17 @@ public class Hash {
     private static final String hexDigIts[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
 
     public static String MD5Encode(String origin, String charsetname) {
-        String resultString = null;
         try {
-            resultString = origin;
             MessageDigest md = MessageDigest.getInstance("MD5");
             if (null == charsetname || "".equals(charsetname)) {
-                resultString = byteArrayToHexString(md.digest(resultString.getBytes()));
+                origin = byteArrayToHexString(md.digest(origin.getBytes()));
             } else {
-                resultString = byteArrayToHexString(md.digest(resultString.getBytes(charsetname)));
+                origin = byteArrayToHexString(md.digest(origin.getBytes(charsetname)));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return resultString;
+        return origin;
     }
 
     private static String byteArrayToHexString(byte b[]) {
@@ -45,6 +43,7 @@ public class Hash {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
+            System.out.print("Your password> ");
             String passwd = sc.nextLine();
             if (passwd.equals("exit")) break;
             System.out.println(Hash.MD5Encode(passwd, ""));

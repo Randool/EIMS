@@ -19,7 +19,7 @@ public class RedisJava {
         String Tname = jedis.get(Tno);
         if (Tname == null) {
             try {
-                System.out.println("[info] Get Tname from MySQL");
+//                System.out.println("[info] Get Tname from MySQL");
                 // 如果Redis中没有数据，尝试从MySQL中获取
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(String.format("SELECT Tname from Teacher WHERE Tno='%s'", Tno));
@@ -30,7 +30,7 @@ public class RedisJava {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else System.out.println("[info] Get Tname from Redis");
+        }
         return Tname;
     }
 
@@ -69,15 +69,14 @@ public class RedisJava {
     public static void main(String[] argv) {
         RedisJava rj = new RedisJava();
         rj.jedis.flushAll();
-//        Scanner sc = new Scanner(System.in);
-//        String key = sc.nextLine();
-        // 计算机工程系
         int expire = 5;
-        Set<String> ans = rj.CourseBuf("计算机工程系", expire);
-        for (String item: ans) {
-            List<String> seq = Arrays.asList(item.split("\\|"));
-            System.out.println(seq);
+        long tic[] = new long[5];
+        for (int i = 0; i < 5; ++i) {
+            tic[i] = System.currentTimeMillis();
+            System.out.println(rj.CourseBuf("计算机工程系", expire));
         }
+        for (int i = 1; i < 5; ++i)
+            System.out.println(String.format("查询时间：%d ms", tic[i] - tic[i-1]));
     }
 
 }
