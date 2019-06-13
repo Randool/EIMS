@@ -3,6 +3,7 @@
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     Cookie cookies[] = request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组里面
@@ -100,7 +101,7 @@
                                     try {
                                         Statement stmt = conn.createStatement();
                                         sql = String.format("SELECT Cno,Cname,teacher.Tdept,Credit FROM course,teacher where teacher.Tno=course.Tno and teacher.Tno='%s'", user_no);
-                                        // System.out.print(sql);
+                                        sql = NoInj.TransInjection(sql);  // 防止注入
                                         ResultSet rs = stmt.executeQuery(sql);
                                         out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>系名</th><th>学分</th></tr></thead>");
                                         out.println("<tbody>");

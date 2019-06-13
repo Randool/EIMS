@@ -3,6 +3,8 @@
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.Hash" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     String panduan = request.getParameter("panduan");
@@ -14,6 +16,7 @@
         if (panduan != null && panduan.equals("true")) {//直接删除
             String Tno = request.getParameter("Tno");
             sql = String.format("delete  from teacher where Tno='%s'", Tno);
+            sql = NoInj.TransInjection(sql);  // 防止注入
             stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
@@ -36,7 +39,9 @@
                 Tname = new String(Tname.getBytes(ISO_8859_1), UTF_8);
                 String Tsex = new String(request.getParameter("Tsex").getBytes(ISO_8859_1), UTF_8);
                 String Sdept = new String(request.getParameter("Sdept").getBytes(ISO_8859_1), UTF_8);
+                password_get = Hash.MD5Encode(password_get, "");
                 sql = String.format("update teacher set Tname='%s',Tsex='%s',Tdept='%s',Password='%s' where Tno='%s'", Tname, Tsex, Sdept, password_get, Tno);
+                sql = NoInj.TransInjection(sql);  // 防止注入
                 stmt.executeUpdate(sql);
                 stmt.close();
                 conn.close();
@@ -48,6 +53,7 @@
         if (panduan != null && panduan.equals("false")) {
             String Tno = request.getParameter("Tno");
             sql = String.format("select *  from teacher where Tno='%s'", Tno);
+            sql = NoInj.TransInjection(sql);  // 防止注入
             rs = stmt.executeQuery(sql);
             rs.next();
         }
@@ -185,7 +191,8 @@
                                             <div class="col-md-12 margin-bottom-15">
                                                 <label for="password" class="control-label">密码</label>
                                                 <input type="password" class="form-control" name="password"
-                                                       value="<%if(panduan!=null&&panduan.equals("false"))out.print(rs.getString("password"));%>">
+                                                       value="">
+                                                       <%--value="<%if(panduan!=null&&panduan.equals("false"))out.print(rs.getString("password"));%>">--%>
                                             </div>
                                             <div class="col-md-12">
                                                 <input type="hidden" name="panduan" value="update"/>

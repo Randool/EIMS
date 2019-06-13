@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -77,6 +78,7 @@
                     try {
                         Statement stmt = conn.createStatement();
                         sql = String.format("select * from student where Sno='%s'", Sno);
+                        sql = NoInj.TransInjection(sql);  // 防止注入
                         ResultSet rs = stmt.executeQuery(sql);
                         rs.next();
                         String sname = rs.getString("Sname");

@@ -89,15 +89,16 @@
                                     try {
                                         Statement stmt = conn.createStatement();
                                         ResultSet rs = stmt.executeQuery("select * from teacher");
-                                        out.println("<table class='table table-striped'><thead><tr><th>学工号</th><th>姓名</th><th>性别</th><th>所属系</th><th>密码</th><th>更改</th></tr></thead>");
+                                        out.println("<table class='table table-striped'><thead><tr><th>学工号</th><th>姓名</th><th>性别</th><th>所属系</th><th>更改</th></tr></thead>");
                                         out.println("<tbody>");
                                         while (rs.next()) {
                                             String Tno = rs.getString("Tno");
                                             String Tname = rs.getString("Tname");
                                             String Tsex = rs.getString("Tsex");
                                             String Tdept = rs.getString("Tdept");
-                                            String pass = rs.getString("Password");
-                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=false'>修改</a>/<a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=true'>删除</a></td></tr></td></tr>", Tno, Tname, Tsex, Tdept, pass, Tno, Tname, Tno, Tname));
+//                                            String pass = rs.getString("Password");
+//                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=false'>修改</a>/<a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=true'>删除</a></td></tr></td></tr>", Tno, Tname, Tsex, Tdept, pass, Tno, Tname, Tno, Tname));
+                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=false'>修改</a>/<a href='manager_update_teacher.jsp?Tno=%s&Tname=%s&panduan=true'>删除</a></td></tr></td></tr>", Tno, Tname, Tsex, Tdept, Tno, Tname, Tno, Tname));
                                         }
                                         out.println("</tbody></table>");
                                         stmt.close();

@@ -4,6 +4,7 @@
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%@ page import="com.open.util.Grade2Credit" %>
+<%@ page import="com.open.util.NoInj" %>
 <%!ResultSet rs; //全局作用域%>
 <%
     String sql;
@@ -66,16 +67,19 @@
             if (flag == 1) {
                 Cname = new String(Cname.getBytes("ISO_8859_1"), UTF_8);
                 sql = String.format("select * from course where Cno='%s'and Cname='%s'", Cno, Cname);
+                sql = NoInj.TransInjection(sql);  // 防止注入
                 rs = stmt.executeQuery(sql);
                 if (!rs.next()) {
                     out.print("<script>alert('课程号和课程名不匹配');window.location='teacher_view_grade.jsp' </script>");    // 跳转到view中
                 }
                 sql = String.format("select * from student where Sno='%s'", Sno);
+                sql = NoInj.TransInjection(sql);  // 防止注入
                 rs = stmt.executeQuery(sql);
                 if (!rs.next()) {
                     out.print("<script>alert('不存在该学生');window.location='teacher_update_grade.jsp' </script>");
                 }
                 sql = String.format("select * from sc,course,teacher where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'", Sno, Cno, user_no);
+                sql = NoInj.TransInjection(sql);  // 防止注入
                 rs = stmt.executeQuery(sql);
                 if (!rs.next()) {
                     out.print("<script>alert('该学生不在你所教的学生范围内');window.location='teacher_update_grade.jsp' </script>");
@@ -84,6 +88,7 @@
                 sql = String.format("UPDATE SC set Grade=%d, GPA=%f WHERE SC.Sno = '%s' AND SC.Cno='%s'", grade, credit, Sno, Cno);
 //                sql = String.format("update sc,course,teacher set grade=%d, Credit=%f where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'",
 //                        grade, credit, Sno, Cno, user_no);
+                sql = NoInj.TransInjection(sql);  // 防止注入
                 stmt.executeUpdate(sql);
                 out.print("<script>alert('提交成功');window.location='teacher_view_grade.jsp' </script>");
                 rs.close();
@@ -92,6 +97,7 @@
             }
         } else if (change != null && change.length() != 0) {
             sql = String.format("select Cname, Cdept from course where Cno='%s'", Cno);
+            sql = NoInj.TransInjection(sql);  // 防止注入
             rs = stmt.executeQuery(sql);
             rs.next();
         }

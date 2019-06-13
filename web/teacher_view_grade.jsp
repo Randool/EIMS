@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -98,6 +99,7 @@
                                     try {
                                         Statement stmt = conn.createStatement();
                                         sql = String.format("SELECT student.Sno,Sname,Ssex,student.Sdept,course.Cno,course.Cname,Grade,GPA FROM student,sc,course,teacher WHERE student.Sno=sc.Sno and course.Cno=sc.Cno and course.Tno=teacher.Tno and course.Tno='%s'", user_no);
+                                        sql = NoInj.TransInjection(sql);  // 防止注入
                                         ResultSet rs = stmt.executeQuery(sql);
                                         out.println("<table class='table table-striped'><thead><tr><th>学号</th><th>姓名</th><th>性别</th><th>所属系</th><th>课程号</th><th>课程名</th><th>成绩</th><th>绩点</th></tr></thead>");
                                         out.println("<tbody>");

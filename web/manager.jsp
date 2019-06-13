@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -84,6 +85,7 @@
                 <%
                     Statement stmt;
                     sql = String.format("select * from manager where Mno='%s'", Mno);
+                    sql = NoInj.TransInjection(sql);  // 防止注入
 //                    System.out.println(sql);
                     try {
                         stmt = conn.createStatement();

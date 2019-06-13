@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     String panduan = request.getParameter("panduan");
@@ -13,6 +14,7 @@
 
         if (panduan.equals("select")) {//选择课程
             sql = String.format("select * from sc where Sno='%s' and Cno='%s'", Sno, Cno);
+            sql = NoInj.TransInjection(sql);  // 防止注入
             ResultSet rs = stmt.executeQuery(sql);
             boolean selected = false;
             if (rs.next()) {
@@ -44,6 +46,7 @@
                     String day1 = rs.getString("Cday");
                     //查看这个学生已经选择的课程信息
                     sql = String.format("select * from sc,course where sc.cno=course.cno and Sno='%s'", Sno);
+                    sql = NoInj.TransInjection(sql);  // 防止注入
                     rs = stmt.executeQuery(sql);
                     boolean flag = false;
                     while (rs.next()) {
@@ -56,7 +59,7 @@
                     }
                     if (!flag) { //没冲突，通过第三道检验
                         sql = String.format("insert into SC(Sno,Cno) values('%s','%s')", Sno, Cno);
-                        // System.out.println(sql);
+                        sql = NoInj.TransInjection(sql);  // 防止注入
                         stmt.executeUpdate(sql);
                         stmt.close();
                         conn.close();
@@ -70,8 +73,8 @@
             }
         } else if (panduan.equals("cancel")) {
             sql = String.format("delete from sc where Sno='%s' and Cno='%s'", Sno, Cno);
-            int a = stmt.executeUpdate(sql);
-            // System.out.println(a);
+            sql = NoInj.TransInjection(sql);  // 防止注入
+            stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
             out.print(String.format("<script>alert('删除成功'); window.location='student_elective_result.jsp?Sno=%s' </script>", Sno));

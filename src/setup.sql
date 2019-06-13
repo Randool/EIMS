@@ -6,7 +6,7 @@ CREATE TABLE `Manager` (
     `Mno`       CHAR(16) NOT NULL,
     `Mname`     CHAR(20) NOT NULL,
     `Msex`      CHAR(5) NOT NULL,
-    `Password`  CHAR(10) NOT NULL,
+    `Password`  CHAR(35) NOT NULL,
     -- 约束
     CONSTRAINT `mgr_PK` PRIMARY KEY (`Mno`),
     CONSTRAINT `mgr_sex` CHECK (`Msex` = '男' OR `Msex` = '女')
@@ -21,7 +21,7 @@ CREATE TABLE Student (
     `Sname`     CHAR(20) NOT NULL,
     `Ssex`      CHAR(5) NOT NULL,
     `Sdept`     CHAR(20) NOT NULL,
-    `Password`  CHAR(10) NOT NULL,
+    `Password`  CHAR(35) NOT NULL,
     -- 约束
     CONSTRAINT `stu_PK` PRIMARY KEY(`Sno`),
     CONSTRAINT `stu_FK` FOREIGN KEY(`Sdept`) REFERENCES Department(`Dept`),
@@ -33,7 +33,7 @@ CREATE TABLE Teacher (
     `Tname`     CHAR(20) NOT NULL,
     `Tsex`      CHAR(5) NOT NULL,
     `Tdept`     CHAR(20) NOT NULL,
-    `Password`  CHAR(10) NOT NULL,
+    `Password`  CHAR(35) NOT NULL,
     -- 约束
     CONSTRAINT `tch_PK` PRIMARY KEY(`Tno`),
     CONSTRAINT `tch_FK` FOREIGN KEY(`Tdept`) REFERENCES Department(`Dept`),
@@ -68,25 +68,26 @@ CREATE TABLE SC (
 );
 
 -- 数据部分
-INSERT INTO Manager VALUES ('M00001', 'admin', '男', 'passwd');
+-- INSERT INTO Manager VALUES ('M00001', 'admin', '男', 'passwd');
+INSERT INTO Manager VALUES ('M00001', 'admin', '男', '76a2173be6393254e72ffa4d6df1030a');
 
 INSERT INTO Department VALUES
     ('计算机工程系'),('通信工程系'),('软件工程系'),('信息工程系');
-INSERT INTO Student VALUES
-    ('201608010506', '邱志豪', '男', '计算机工程系', '163456'),
-    ('201608010510', '李辰',   '男', '计算机工程系', '163465'),
-    ('201608010519', '陈志伦', '男', '计算机工程系', '163546'),
-    ('201608010530', '姚沛沛', '女', '计算机工程系', '163564'),
-    ('111111111111', 'test', '女', '计算机工程系', 'test'),
-    ('201608060209', '戴凌锋', '男', '计算机工程系', '163645');
+INSERT INTO Student VALUES  -- 111
+    ('201608010506', '邱志豪', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('201608010510', '李辰',   '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('201608010519', '陈志伦', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('201608010530', '姚沛沛', '女', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('111111111111', 'test', '女', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('201608060209', '戴凌锋', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668');
 
 INSERT INTO Teacher VALUES
-    ('T0x00', 'von Neumann', '男', '计算机工程系', '163456'),
-    ('T0x01', 'Hopcroft', '男', '计算机工程系', '163456'),
-    ('T0x02', 'Turing', '男', '计算机工程系', '163465'),
-    ('T0x03', 'Thompson', '男', '计算机工程系', '163546'),
-    ('T0x04', 'Dijkstra', '男', '计算机工程系', '163564'),
-    ('T0x05', 'Tim Berners-Lee', '男', '计算机工程系', '163645');
+    ('T0x00', 'von Neumann', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('T0x01', 'Hopcroft', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('T0x02', 'Turing', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('T0x03', 'Thompson', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('T0x04', 'Dijkstra', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668'),
+    ('T0x05', 'Tim Berners-Lee', '男', '计算机工程系', '698d51a19d8a121ce581499d7b701668');
 
 INSERT INTO Course VALUES
     ('CS04023','计算机系统',4,'计算机工程系','T0x00',1,1,80,'贝尔实验室'),

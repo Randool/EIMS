@@ -2,6 +2,8 @@
          pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="com.open.util.Hash" %>
+<%@ page import="com.open.util.NoInj" %>
 <%!
     public static boolean isNumeric(String str) {
         for (int i = str.length(); --i >= 0; ) {
@@ -39,6 +41,7 @@
 
         if (panduan2 == 1) {
             String sql = String.format("select * from %s where %s='%s'", user_type, user_no, username);
+            sql = NoInj.TransInjection(sql);  // 防止注入
             MySQLJava open = new MySQLJava();
             Connection conn = open.getConnection();
             try {
@@ -46,7 +49,7 @@
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     String temp = rs.getString("password");
-                    if (temp.equals(password_get)) { //获取学号
+                    if (temp.equals(Hash.MD5Encode(password_get, ""))) { //获取学号
                         out.print("<script>alert('登录成功');   window.location='" + user_type + ".jsp?user_no=" + username + "' </script>");
                     } else {
                         out.print("<script>alert('密码错误'); </script>");

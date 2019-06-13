@@ -3,6 +3,7 @@
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     String panduan = request.getParameter("panduan");
@@ -14,6 +15,7 @@
         if (panduan != null && panduan.equals("true")) {//直接删除
             String Cno = request.getParameter("Cno");
             sql = String.format("delete  from course where Cno='%s'", Cno);
+            sql = NoInj.TransInjection(sql);  // 防止注入
             stmt.executeUpdate(sql);
             stmt.close();
             conn.close();
@@ -80,6 +82,7 @@
                 Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
                 Addr = new String(Addr.getBytes(ISO_8859_1), UTF_8);
                 sql = String.format("update course set Cname='%s',Credit='%s',Cdept='%s',Tno='%s',Cweek='%s',Cday=%s,Cap=%s,Addr='%s' where Cno='%s'", Cname, Credit, Sdept, Tno, Cweek, Cday, Cap, Addr, Cno);
+                sql = NoInj.TransInjection(sql);  // 防止注入
                 // System.out.println(sql);
                 stmt.executeUpdate(sql);
                 stmt.close();
@@ -92,6 +95,7 @@
         if (panduan != null && panduan.equals("false")) {
             String Cno = request.getParameter("Cno");
             sql = String.format("select *  from course where Cno='%s'", Cno);
+            sql = NoInj.TransInjection(sql);  // 防止注入
             rs = stmt.executeQuery(sql);
             rs.next();
         }

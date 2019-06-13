@@ -2,6 +2,7 @@
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="com.open.util.RedisJava" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -85,6 +86,7 @@
                                     out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>学分</th><th>课程系别</th><th>教师</th><th>授课星期</th><th>授课时间</th><th>课程容量</th><th>已选人数</th><th>授课地点</th><th>选择课程</th></tr></thead>");
                                     out.println("<tbody>");
                                     sql = String.format("select * from student where Sno='%s' LIMIT 1", Sno);   // 限制1条
+                                    sql = NoInj.TransInjection(sql);  // 防止注入
                                     ResultSet rs;
                                     Statement stmt;
                                     try {

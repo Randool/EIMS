@@ -13,6 +13,7 @@ public class Test {
 
         String Mno = "M00001", Mname = null;
         String sql = String.format("select * from manager where Mno='%s'", Mno);
+        sql = NoInj.TransInjection(sql);
 
         Statement stmt;
         try {

@@ -3,6 +3,7 @@
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -83,6 +84,7 @@
                                     try {
                                         Statement stmt = conn.createStatement();
                                         sql = String.format("select * from sc,course where sc.cno=course.cno and Sno='%s'", Sno);
+                                        sql = NoInj.TransInjection(sql);  // 防止注入
                                         ResultSet rs = stmt.executeQuery(sql);
                                         out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>学分</th><th>课程系别</th><th>教师</th><th>授课星期</th><th>授课时间</th><th>课程容量</th><th>已选人数</th><th>授课地点</th><th>退选课程</th></tr></thead>");
                                         out.println("<tbody>");
@@ -91,12 +93,14 @@
                                         while (rs.next()) {
                                             String tempTno = rs.getString("Tno");
                                             sql = String.format("select * from teacher where Tno='%s'", tempTno);
+                                            sql = NoInj.TransInjection(sql);  // 防止注入
                                             rs1 = stmt1.executeQuery(sql);
                                             rs1.next();
                                             String tname = rs1.getString("Tname");
 
                                             String tempCno = rs.getString("Cno");
                                             sql = String.format("select count(*) from sc where Cno='%s'", tempCno); //选择了这个课程的人数
+                                            sql = NoInj.TransInjection(sql);  // 防止注入
                                             rs1 = stmt1.executeQuery(sql);
                                             rs1.next();
                                             out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td><a href='student_update_course.jsp?Cno=%s&Sno=%s&panduan=cancel'>退选</a></td></tr>", rs.getString("Cno"), rs.getString("Cname"), rs.getString("Credit"), rs.getString("Cdept"), tname, rs.getString("Cweek"), rs.getString("Cday"), rs.getString("Cap"), rs1.getString("count(*)"), rs.getString("Addr"), rs.getString("Cno"), Sno));

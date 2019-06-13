@@ -3,6 +3,7 @@
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     String Sname = request.getParameter("Sname");
@@ -43,6 +44,7 @@
                 Ssex = new String(Ssex.getBytes(ISO_8859_1), UTF_8);
                 Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
                 sql = String.format("insert into student values('%s','%s','%s','%s','%s')", Sno, Sname, Ssex, Sdept, password_get);
+                sql = NoInj.TransInjection(sql);  // 防止注入
                 stmt.executeUpdate(sql);
                 out.print("<script>alert('注册成功'); window.location='manager_view_student.jsp' </script>");//判断学号
             }

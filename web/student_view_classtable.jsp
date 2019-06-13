@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*" %>
 <%@ page import="com.open.util.MySQLJava" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -101,6 +102,7 @@
                                         String week[] = new String[20];
                                         String day[] = new String[20];
                                         sql = String.format("SELECT * FROM SC,course where course.Cno = SC.Cno and Sno='%s'", Sno);
+                                        sql = NoInj.TransInjection(sql);  // 防止注入
                                         try {
                                            Statement statement = conn.createStatement();
                                             ResultSet rs1 = statement.executeQuery(sql);

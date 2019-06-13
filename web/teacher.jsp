@@ -3,6 +3,7 @@
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.NoInj" %>
 <%
     String sql;
     MySQLJava open = new MySQLJava();
@@ -84,6 +85,7 @@
             <h1>
                 <%
                     sql = String.format("select * from teacher where Tno='%s'", user_no);
+                    sql = NoInj.TransInjection(sql);  // 防止注入
                     try {
                         Statement stmt = conn.createStatement();
                         ResultSet rs = stmt.executeQuery(sql);
