@@ -46,8 +46,8 @@ CREATE TABLE Course (
     `Credit`  DOUBLE NOT NULL,
     `Cdept`   CHAR(20) NOT NULL, -- 所属院系
     `Tno`     CHAR(16) NOT NULL,
-    `Cweek`   CHAR(20) NOT NULL,
-    `Cday`    INTEGER NOT NULL,
+    `Cweek`   CHAR(20) NOT NULL CHECK (Cweek > 0 AND Cweek < 8),
+    `Cday`    INTEGER NOT NULL CHECK (Cday > 0 AND Cday < 5),
     `Cap`     INTEGER NOT NULL, -- 容量
     `Addr`    CHAR(20) NOT NULL,
     -- 约束
