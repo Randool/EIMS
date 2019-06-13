@@ -4,6 +4,7 @@
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
 <%@ page import="com.open.util.NoInj" %>
+<%@ page import="com.open.util.Hash" %>
 <%
     String sql;
     String Sname = request.getParameter("Sname");
@@ -43,6 +44,7 @@
                 Sname = new String(Sname.getBytes(ISO_8859_1), UTF_8);
                 Ssex = new String(Ssex.getBytes(ISO_8859_1), UTF_8);
                 Sdept = new String(Sdept.getBytes(ISO_8859_1), UTF_8);
+                password_get = Hash.MD5Encode(password_get, "");
                 sql = String.format("insert into student values('%s','%s','%s','%s','%s')", Sno, Sname, Ssex, Sdept, password_get);
                 sql = NoInj.TransInjection(sql);  // 防止注入
                 stmt.executeUpdate(sql);
@@ -167,7 +169,7 @@
                                             </div>
                                             <div class="col-md-12 margin-bottom-15">
                                                 <label for="password" class="control-label">密码</label>
-                                                <input type="password" class="form-control" name="password">
+                                                <input type="password"  class="form-control" name="password">
                                             </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-primary">增加</button>
