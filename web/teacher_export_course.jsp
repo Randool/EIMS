@@ -130,7 +130,7 @@
                                         String day[] = new String[20];
                                         int j = 0;
                                         while (rs.next()) {
-                                            String cname = new String(rs.getString("Cname").getBytes(ISO_8859_1), UTF_8);
+                                            String cname = rs.getString("Cname");
                                             String cweek = rs.getString("Cweek");
                                             String cday = rs.getString("Cday");
 //                                            String Addr = new String(rs.getString("Addr").getBytes(ISO_8859_1), UTF_8);
@@ -139,7 +139,6 @@
                                             day[j] = cday;
                                             j++;
                                         }
-
                                         for (int i = 1; i < 5; i++) {
                                             String ii = i + "";
                                             out.println("<tr>");

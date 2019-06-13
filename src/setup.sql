@@ -43,7 +43,7 @@ CREATE TABLE Teacher (
 CREATE TABLE Course (
     `Cno`     CHAR(16) NOT NULL,
     `Cname`   CHAR(20) NOT NULL,
-    `Credit`  INTEGER NOT NULL,
+    `Credit`  DOUBLE NOT NULL,
     `Cdept`   CHAR(20) NOT NULL, -- 所属院系
     `Tno`     CHAR(16) NOT NULL,
     `Cweek`   CHAR(20) NOT NULL,

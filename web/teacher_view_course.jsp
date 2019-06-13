@@ -8,12 +8,12 @@
     Cookie cookies[] = request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组里面
     Cookie sCookie = null;
     String svalue = null;
-    String sname = null;
+//    String sname = null;
 
     for (int i = 0; i < cookies.length - 1; i++) {    //用一个循环语句遍历刚才建立的Cookie对象数组
         sCookie = cookies[i]; //取出数组中的一个Cookie对象
         if (sCookie.getName().equals("user_no")) {
-            sname = sCookie.getName(); //取得这个Cookie的名字
+//            sname = sCookie.getName(); //取得这个Cookie的名字
             svalue = sCookie.getValue(); //取得这个Cookie的内容
         }
     }
@@ -105,9 +105,9 @@
                                         out.println("<table class='table table-striped'><thead><tr><th>课程号</th><th>课程名</th><th>系名</th><th>学分</th></tr></thead>");
                                         out.println("<tbody>");
                                         while (rs.next()) {
-                                            String Cname = new String(rs.getString("Cname").getBytes(ISO_8859_1), UTF_8);
-                                            String Tdept = new String(rs.getString("teacher.Tdept").getBytes(ISO_8859_1), UTF_8);
-                                            out.println("<tr><td>" + rs.getString("Cno") + "</td><td>" + Cname + "</td><td>" + Tdept + "</td><td>" + rs.getString("Credit") + "</td></tr>");
+                                            String Cname = rs.getString("Cname");
+                                            String Tdept = rs.getString("teacher.Tdept");
+                                            out.println(String.format("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", rs.getString("Cno"), Cname, Tdept, rs.getString("Credit")));
                                         }
                                         out.println("</tbody></table>");
                                         rs.close();

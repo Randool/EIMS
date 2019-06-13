@@ -3,6 +3,7 @@
 <%@ page import="com.open.util.MySQLJava" %>
 <%@ page import="static java.nio.charset.StandardCharsets.ISO_8859_1" %>
 <%@ page import="static java.nio.charset.StandardCharsets.UTF_8" %>
+<%@ page import="com.open.util.Grade2Credit" %>
 <%!ResultSet rs; //全局作用域%>
 <%
     String sql;
@@ -40,7 +41,7 @@
         stmt = conn.createStatement();
         if (change == null && panduan != null) {//判断是否更新
             int grade = 0;
-            int flag = 1;//判断标志
+            int flag = 1;   //判断标志
             if (Newgrade.equals("")) {
                 grade = -1;
             } else if (Newgrade.length() > 3) {
@@ -50,29 +51,24 @@
             }
 
             if (Cno.equals("")) {
-                // System.out.print("Cno");
                 out.print("<script>alert('课程号为空！');window.location.href='teacher_update_grade.jsp'  </script>");
                 flag = 0;
             } else if (Cname.equals("")) {
-                // System.out.print("Cname");
                 out.print("<script>alert('课程名为空！');window.location.href='teacher_update_grade.jsp' </script>");
                 flag = 0;
             } else if (Sno.length() != 12) {
-                // System.out.print("Sno");
                 out.print("<script>alert('学生学号长度不为12');window.location.href='teacher_update_grade.jsp' </script>");
                 flag = 0;
             } else if (grade < 0 || grade > 100) {
-                // System.out.print("grade" + user_no);
                 out.print("<script>alert('输入[0,100]的成绩值');window.location='teacher_update_grade.jsp'</script>");
                 flag = 0;
             }
-            // System.out.print(flag);
             if (flag == 1) {
-                // System.out.print("flag");
+                Cname = new String(Cname.getBytes("ISO_8859_1"), UTF_8);
                 sql = String.format("select * from course where Cno='%s'and Cname='%s'", Cno, Cname);
                 rs = stmt.executeQuery(sql);
                 if (!rs.next()) {
-                    out.print("<script>alert('课程号和课程名不匹配');window.location='teacher_update_grade.jsp' </script>");
+                    out.print("<script>alert('课程号和课程名不匹配');window.location='teacher_view_grade.jsp' </script>");    // 跳转到view中
                 }
                 sql = String.format("select * from student where Sno='%s'", Sno);
                 rs = stmt.executeQuery(sql);
@@ -84,7 +80,10 @@
                 if (!rs.next()) {
                     out.print("<script>alert('该学生不在你所教的学生范围内');window.location='teacher_update_grade.jsp' </script>");
                 }
-                sql = String.format("update sc,course,teacher set grade=%d where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'", grade, Sno, Cno, user_no);
+                double credit = Grade2Credit.Credit(grade);
+                sql = String.format("UPDATE SC set Grade=%d, GPA=%f WHERE SC.Sno = '%s' AND SC.Cno='%s'", grade, credit, Sno, Cno);
+//                sql = String.format("update sc,course,teacher set grade=%d, Credit=%f where sc.Cno=course.Cno and teacher.Tno=course.Tno and Sno='%s' and course.Cno='%s' and teacher.Tno='%s'",
+//                        grade, credit, Sno, Cno, user_no);
                 stmt.executeUpdate(sql);
                 out.print("<script>alert('提交成功');window.location='teacher_view_grade.jsp' </script>");
                 rs.close();
@@ -92,8 +91,7 @@
                 conn.close();
             }
         } else if (change != null && change.length() != 0) {
-            sql = String.format("select Cname, Sdept from course where Cno='%s'", Cno);
-            // System.out.println(sql);
+            sql = String.format("select Cname, Cdept from course where Cno='%s'", Cno);
             rs = stmt.executeQuery(sql);
             rs.next();
         }
@@ -145,17 +143,6 @@
                     </li>
                 </ul>
             </li>
-            <!--     <li class="sub open">
-                       <a href="javascript:;">
-                         <i class="fa fa-database"></i> 教师信息 <div class="pull-right"><span class="caret"></span></div>
-                       </a>
-                       <ul class="templatemo-submenu">
-                           <li><a href="manager_view_teacher.jsp" >查看教师信息</a></li>
-                         <li><a href="manager_add_teacher.jsp">注册/修改教师信息</a></li>
-                         <li><a href="manager_update_teacher.jsp">删除教师信息</a></li>
-                       </ul>
-                     </li>
-           -->
             <li class="sub open" id="now">
                 <a href="javascript:;">
                     <i class="fa fa-database"></i> 课程信息
@@ -179,8 +166,6 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="text-align:center"><h1>修改成绩</h1></div>
                             <div class="panel-body">
-
-
                                 <p class="margin-bottom-15" style="color: red">请正确填写以下信息！</p>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -196,10 +181,13 @@
                                             <div class="col-md-6 margin-bottom-15">
                                                 <label for="Cname" class="control-label">课程名</label>
                                                 <input type="text" class="form-control" name="Cname"
-                                                       value="<%if(change!=null&&change.length()!=0){try {
-out.print(rs.getString("Cname"));} catch (SQLException e) {
-    e.printStackTrace();
-}}%>" <%
+                                                       value="<%if(change!=null && change.length()!=0){
+                                                           try {
+                                                                out.print(rs.getString("Cname"));
+                                                           } catch (SQLException e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                       }%>" <%
                                                     if (change != null && change.length() != 0)
                                                         out.print("readonly");
                                                 %>/>
@@ -207,9 +195,12 @@ out.print(rs.getString("Cname"));} catch (SQLException e) {
                                             <div class="col-md-6 margin-bottom-15">
                                                 <label for="Sno" class="control-label">学生学号</label>
                                                 <input type="text" class="form-control" name="Sno"
-                                                       value="<%if(change!=null&&change.length()!=0)out.print(Sno);%>" <%
-                                                    if (change != null && change.length() != 0)
-                                                        out.print("readonly");
+                                                       value="<%
+                                                       if(change!=null&&change.length()!=0)
+                                                           out.print(Sno);%>"
+                                                        <%
+                                                        if (change != null && change.length() != 0)
+                                                            out.print("readonly");
                                                 %>/>
                                             </div>
                                             <div class="col-md-6 margin-bottom-15">
@@ -218,9 +209,9 @@ out.print(rs.getString("Cname"));} catch (SQLException e) {
                                             </div>
                                             <div class="col-md-12 margin-bottom-15">
                                                 <label for="singleSelect">所属系</label>
-                                                <select class="form-control margin-bottom-15" name="Sdept">
+                                                <select class="form-control margin-bottom-15" name="Cdept">
                                                     <option value="计算机工程系" <% try {
-                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("计算机工程系")) {
+                                                        if (change != null && change.length() != 0 && rs.getString("Cdept").equals("计算机工程系")) {
                                                             out.print("selected = 'selected'");
                                                         }
                                                     } catch (SQLException e) {
@@ -228,7 +219,7 @@ out.print(rs.getString("Cname"));} catch (SQLException e) {
                                                     }%>>计算机工程系
                                                     </option>
                                                     <option value="通信工程系" <% try {
-                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("通信工程系")) {
+                                                        if (change != null && change.length() != 0 && rs.getString("Cdept").equals("通信工程系")) {
                                                             out.print("selected = 'selected'");
                                                         }
                                                     } catch (SQLException e) {
@@ -236,7 +227,7 @@ out.print(rs.getString("Cname"));} catch (SQLException e) {
                                                     }%>>通信工程系
                                                     </option>
                                                     <option value="软件工程系" <% try {
-                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("软件工程系")) {
+                                                        if (change != null && change.length() != 0 && rs.getString("Cdept").equals("软件工程系")) {
                                                             out.print("selected = 'selected'");
                                                         }
                                                     } catch (SQLException e) {
@@ -244,7 +235,7 @@ out.print(rs.getString("Cname"));} catch (SQLException e) {
                                                     }%>>软件工程系
                                                     </option>
                                                     <option value="信息工程系" <% try {
-                                                        if (change != null && change.length() != 0 && rs.getString("Sdept").equals("信息工程系")) {
+                                                        if (change != null && change.length() != 0 && rs.getString("Cdept").equals("信息工程系")) {
                                                             out.print("selected = 'selected'");
                                                             rs.close();
                                                             stmt.close();
